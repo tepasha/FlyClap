@@ -5,3 +5,7 @@ build/
 *.hex
 *.o
 .DS_Store
+
+# CAD
+__pycache__/
+*.tmp.svg
