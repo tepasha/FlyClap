@@ -5,8 +5,8 @@
 | Проєкт | Принцип | Сенсор | Виконавчий механізм | Реакція |
 |---|---|---|---|---|
 | [**FlyClap**](docs/flyclap.md) | «Хлопавка»: муха пролітає між пластинами → вони схлопуються | ІЧ-завіса (4 промені) + LM339 | Соленоїд-засувка + пружини, серво взводить | ~25 мс |
-| [**FlySonar**](docs/flysonar.md) | Турель: ехолокатор сканує зону, водомет стріляє по цілі | HC-SR04 на pan-tilt | Помпа або клапан + сопло, 2 серви | ~3 с скан + ~1–2 с уточнення |
-| [**FlySonar + FlyVision**](docs/flyvision.md) | Та сама турель, але очі — камера над підсвіченим фоном; бачить і мошку | ESP32-CAM + LED-панель | Клапан + розпилювач, 2 серви | ~70–90 мс |
+| [**FlySonar — Arduino**](docs/flysonar.md) | Турель: ехолокатор сканує зону, водомет стріляє по цілі | HC-SR04 на pan-tilt | Помпа або клапан + сопло, 2 серви | ~3 с скан + ~1–2 с уточнення |
+| [**FlySonar — ESP32**](docs/flysonar-esp32.md) | Та сама турель на одній ESP32-CAM: камера над підсвіченим фоном, бачить і мошку | ESP32-CAM + LED-панель | Клапан + розпилювач, 2 серви | ~70–90 мс |
 
 ## Структура
 
@@ -14,14 +14,15 @@
 fly-defense/
 ├── firmware/
 │   ├── flyclap/flyclap.ino     # ІЧ-завіса + хлопавка
-│   ├── flysonar/flysonar.ino   # турель з водометом (сонар або цілі від камери)
-│   └── flyvision/              # ESP32-CAM: зір, трекер, калібрування
-│       ├── flyvision.ino
-│       └── vision.h            # ядро зору без залежностей (тестується на ПК)
+│   ├── flysonar/flysonar.ino   # FlySonar, Arduino-версія (сонар або цілі від ESP32)
+│   └── flysonar_esp32/         # FlySonar, ESP32-версія (одна плата, камера)
+│       ├── flysonar_esp32.ino
+│       ├── vision.h            # зір без залежностей (тестується на ПК)
+│       └── turret.h            # логіка пострілу (тестується на ПК)
 ├── docs/
 │   ├── flyclap.md              # механіка, BOM, схема, налаштування
-│   ├── flysonar.md
-│   ├── flyvision.md            # режим камери: фон, підключення, калібрування
+│   ├── flysonar.md             # Arduino-версія
+│   ├── flysonar-esp32.md       # ESP32-версія: фон, підключення, калібрування
 │   └── shopping-list.md        # зведений список покупок для обох проєктів
 ├── tools/                      # хост-тести: зір, симуляція турелі
 ├── platformio.ini
@@ -46,13 +47,15 @@ pio device monitor -b 115200
 >
 > Прошивки використовують лише ресурси ATmega328P і працюють без змін і на Nano. Для нього є окремі середовища: `pio run -e flyclap_nano -t upload`, `pio run -e flysonar_nano -t upload`.
 
-Інші варіанти: `flyclap_tssp` (завіса TSSP4038), `flysonar_camera` (+ `_nano`) і `flyvision` / `flyvision_s3` (ESP32) — див. [docs/flyvision.md](docs/flyvision.md).
+FlySonar, ESP32-версія: `pio run -e flysonar_esp32 -t upload` (ESP32-CAM) або `flysonar_esp32_s3` (ESP32-S3 CAM) — див. [docs/flysonar-esp32.md](docs/flysonar-esp32.md).
+
+Інші варіанти: `flyclap_tssp` (завіса TSSP4038), `flysonar_camera` (+ `_nano`) разом з `flysonar_esp32_eyes` (ESP32 як «очі» для Arduino).
 
 ### Тести
 ```bash
 tools/run_tests.sh   # потрібен лише g++
 ```
-Ядро зору FlyVision на синтетичних кадрах, логіка FlySonar у режимі камери та симуляція режиму сонара (віртуальна кімната + модель пелюстки HC-SR04).
+ESP32-версія: зір на синтетичних кадрах і логіка турелі. Arduino-версія: режим цілей від камери та симуляція сонара (віртуальна кімната + модель пелюстки HC-SR04).
 
 ## Безпека
 

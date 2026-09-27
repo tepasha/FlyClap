@@ -1,5 +1,5 @@
-// Хост-тест ядра зору FlyVision на синтетичних кадрах.
-//   g++ -std=c++11 -O2 -Wall -Wextra -I firmware/flyvision tools/vision_test.cpp -o /tmp/vision_test && /tmp/vision_test
+// Хост-тест ядра зору ESP32-версії FlySonar на синтетичних кадрах.
+//   g++ -std=c++11 -O2 -Wall -Wextra -I firmware/flysonar_esp32 tools/vision_test.cpp -o /tmp/vision_test && /tmp/vision_test
 #include "vision.h"
 #include <stdio.h>
 #include <vector>

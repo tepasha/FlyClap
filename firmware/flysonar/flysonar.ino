@@ -14,10 +14,10 @@
  *      (STATIC_ONLY) — по мусі в польоті сонар все одно не влучить.
  *   6) FIRE: поправка на сопло й балістику, постріл, перевірка, до MAX_SHOTS.
  *
- * 1 — КАМЕРА: ESP32-CAM з прошивкою firmware/flyvision шукає комах на
+ * 1 — КАМЕРА: ESP32-CAM з прошивкою firmware/flysonar_esp32 (роль "очі") шукає комах на
  *   підсвіченому фоні й надсилає готові кути по UART у D0 (RX). Arduino тут —
  *   контролер реального часу: плавно наводить серви, відкриває клапан/помпу,
- *   тримає ARM, кулдаун і блокування великих об'єктів. Протокол — див. flyvision.ino.
+ *   тримає ARM, кулдаун і блокування великих об'єктів. Протокол — див. flysonar_esp32.ino.
  *
  * Серви керуються через writeMicroseconds з роздільністю 0.1° (кути в коді —
  * у десятих градуса, *10).
@@ -39,7 +39,7 @@
 // ---------------- Конфігурація збірки ----------------
 // Можна перевизначити прапорцями компілятора (див. platformio.ini)
 #ifndef TARGET_SOURCE_CAMERA
-#define TARGET_SOURCE_CAMERA 0  // 0 — сонар HC-SR04, 1 — ESP32-CAM (firmware/flyvision)
+#define TARGET_SOURCE_CAMERA 0  // 0 — сонар HC-SR04, 1 — ESP32-CAM (firmware/flysonar_esp32, роль "очі")
 #endif
 #ifndef SHOOTER_VALVE
 #define SHOOTER_VALVE        0  // 0 — помпа R385, 1 — клапан 12 В + бак під тиском
@@ -507,7 +507,7 @@ void setup() {
   tiltServo.writeMicroseconds(deg10ToUs(900));
   panServo.attach(PIN_PAN);
   tiltServo.attach(PIN_TILT);
-  Serial.println(F("FlySonar camera mode, waiting for FlyVision..."));
+  Serial.println(F("FlySonar camera mode, waiting for ESP32 eyes..."));
 }
 
 void loop() {
