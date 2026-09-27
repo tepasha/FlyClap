@@ -34,7 +34,7 @@ Arduino-версію можна також поєднати з ESP32 у ролі
 
 ## Механіка
 
-![FlySonar, Arduino-версія — як виглядає пристрій](images/flysonar-arduino-device.svg)
+![FlySonar, Arduino-версія — як виглядає пристрій](../schematics/flysonar-arduino-device.svg)
 
 - Сопло кріпиться паралельно осі сонара. Залишкову різницю компенсують `PAN/TILT_NOZZLE_OFFSET10` (у десятих градуса).
 - Шланг 4 мм, м'який силікон, з запасом петлі, щоб не тягнув серви.
@@ -70,7 +70,7 @@ Arduino-версію можна також поєднати з ESP32 у ролі
 
 ## Підключення
 
-![FlySonar, Arduino-версія — схема підключення](images/flysonar-arduino-wiring.svg)
+![FlySonar, Arduino-версія — схема підключення](../schematics/flysonar-arduino-wiring.svg)
 
 | Arduino | Куди |
 |---|---|

@@ -13,7 +13,7 @@ Arduino-версія (сонар HC-SR04) описана в [flysonar.md](flyson
 | Реакція | ~3 с скан + 1–2 с уточнення | ~70–90 мс |
 | Прошивка | `firmware/flysonar` | `firmware/flysonar_esp32` |
 
-![FlySonar, ESP32-версія — як виглядає пристрій](images/flysonar-esp32-device.svg)
+![FlySonar, ESP32-версія — як виглядає пристрій](../schematics/flysonar-esp32-device.svg)
 
 ## Чому саме так
 
@@ -43,7 +43,7 @@ Arduino-версія (сонар HC-SR04) описана в [flysonar.md](flyson
 
 ## Підключення (самостійна роль)
 
-![FlySonar, ESP32-версія — схема підключення](images/flysonar-esp32-wiring.svg)
+![FlySonar, ESP32-версія — схема підключення](../schematics/flysonar-esp32-wiring.svg)
 
 | Сигнал | ESP32-CAM AI-Thinker | Freenove ESP32-S3 CAM |
 |---|---|---|

@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
-"""Генератор схем підключення та ілюстрацій пристроїв (SVG) для docs/images.
+"""Генератор схем підключення та ілюстрацій пристроїв (SVG + PNG) для папки schematics/.
 
-Запуск з кореня репозиторію:  python3 tools/diagrams.py
-Лише стандартна бібліотека Python. Картинки — звичайні SVG: GitHub показує
-їх у документації, їх можна відкрити в браузері або роздрукувати.
+Запуск з кореня репозиторію:
+    python3 tools/diagrams.py          # лише SVG (стандартна бібліотека Python)
+    python3 tools/diagrams.py --png    # + PNG 2x у schematics/png/
+
+PNG рендерить headless Chromium: шлях у змінній CHROME або перший знайдений
+з chrome-headless-shell / headless_shell / chromium / google-chrome.
 """
 import os
+import shutil
+import subprocess
+import sys
 from xml.sax.saxutils import escape
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "docs", "images")
+OUT = os.path.join(os.path.dirname(__file__), "..", "schematics")
+SAVED = []
 
 # Кольори дротів (однакові на всіх схемах)
 C12 = "#d62828"    # +12 В
@@ -236,6 +243,7 @@ class Svg:
             yy += 20
 
     def save(self, name):
+        SAVED.append((name, self.w, self.h))
         os.makedirs(OUT, exist_ok=True)
         body = "\n".join(self.items)
         svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" height="{self.h}" '
@@ -1046,6 +1054,24 @@ def flysonar_esp32_device():
     s.save("flysonar-esp32-device.svg")
 
 
+def export_png():
+    chrome = os.environ.get("CHROME") or next(
+        (p for p in ("chrome-headless-shell", "headless_shell", "chromium", "chromium-browser", "google-chrome")
+         if shutil.which(p)), None)
+    if not chrome:
+        sys.exit("PNG: не знайдено Chromium — вкажіть шлях у змінній CHROME")
+    png_dir = os.path.join(OUT, "png")
+    os.makedirs(png_dir, exist_ok=True)
+    for name, w, h in SAVED:
+        src = os.path.abspath(os.path.join(OUT, name))
+        dst = os.path.abspath(os.path.join(png_dir, name.replace(".svg", ".png")))
+        subprocess.run([chrome, "--headless", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+                        "--force-device-scale-factor=2", f"--window-size={w},{h}",
+                        f"--screenshot={dst}", "file://" + src],
+                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print("wrote png/" + os.path.basename(dst))
+
+
 if __name__ == "__main__":
     flyclap_wiring()
     flyclap_tssp()
@@ -1054,3 +1080,5 @@ if __name__ == "__main__":
     flyclap_device()
     flysonar_arduino_device()
     flysonar_esp32_device()
+    if "--png" in sys.argv:
+        export_png()

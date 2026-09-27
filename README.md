@@ -23,8 +23,8 @@ fly-defense/
 │   ├── flyclap.md              # механіка, BOM, схема, налаштування
 │   ├── flysonar.md             # Arduino-версія
 │   ├── flysonar-esp32.md       # ESP32-версія: фон, підключення, калібрування
-│   ├── images/                 # схеми підключення та ілюстрації (SVG)
 │   └── shopping-list.md        # зведений список покупок для обох проєктів
+├── schematics/                 # схеми підключення та ілюстрації (SVG + PNG)
 ├── tools/                      # хост-тести, генератор схем (diagrams.py)
 ├── platformio.ini
 └── LICENSE
@@ -36,10 +36,10 @@ fly-defense/
 
 | FlyClap | FlySonar — Arduino | FlySonar — ESP32 |
 |---|---|---|
-| ![FlyClap](docs/images/flyclap-device.svg) | ![FlySonar Arduino](docs/images/flysonar-arduino-device.svg) | ![FlySonar ESP32](docs/images/flysonar-esp32-device.svg) |
-| [схема підключення](docs/images/flyclap-wiring.svg) · [варіант TSSP4038](docs/images/flyclap-tssp.svg) | [схема підключення](docs/images/flysonar-arduino-wiring.svg) | [схема підключення](docs/images/flysonar-esp32-wiring.svg) |
+| ![FlyClap](schematics/flyclap-device.svg) | ![FlySonar Arduino](schematics/flysonar-arduino-device.svg) | ![FlySonar ESP32](schematics/flysonar-esp32-device.svg) |
+| [схема підключення](schematics/flyclap-wiring.svg) · [варіант TSSP4038](schematics/flyclap-tssp.svg) | [схема підключення](schematics/flysonar-arduino-wiring.svg) | [схема підключення](schematics/flysonar-esp32-wiring.svg) |
 
-Картинки генерує `tools/diagrams.py` (лише стандартна бібліотека Python): правите скрипт → `python3 tools/diagrams.py`.
+Усі картинки — у папці [`schematics/`](schematics/) (SVG і PNG для друку/телефона). Їх генерує `tools/diagrams.py`: правите скрипт → `python3 tools/diagrams.py --png`.
 
 ## Збірка
 
