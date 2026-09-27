@@ -6,17 +6,29 @@
  * пружини схлопують пластини (~15–25 мс) → сервопривід знову взводить механізм.
  *
  * Пінаут:
- *   D4..D7  — входи з компаратора LM339 (промінь цілий = LOW, перекритий = HIGH)
+ *   D3      — (лише BEAM_SENSOR_TSSP) несуча 38 кГц на ключ ІЧ-світлодіодів
+ *   D4..D7  — входи завіси (промінь цілий = LOW, перекритий = HIGH):
+ *             LM339 з гістерезисом, або TSSP4038 (BEAM_SENSOR_TSSP = 1)
  *   D8      — кінцевик "взведено" (INPUT_PULLUP, LOW = засувка зачеплена)
  *   D9      — затвор MOSFET соленоїда (IRLZ44N)
  *   D10     — сервопривід взведення (MG996R)
- *   D11     — п'єзо-бузер
+ *   D11     — п'єзо-бузер (пасивний; для TSSP-варіанта — активний)
  *   D13     — статусний світлодіод
  *   A0      — тумблер ARM (INPUT_PULLUP, LOW = озброєно)
  */
 
 #include <Servo.h>
 #include <EEPROM.h>
+#include <util/atomic.h>
+
+// ---------------- Варіант сенсора ----------------
+// 0 — фототранзистори + LM339 (базова схема з docs/flyclap.md)
+// 1 — модульовані приймачі TSSP4038: Timer2 генерує 38 кГц на D3, LM339 і
+//     підстроювальники не потрібні, завіса не боїться сонця. Timer2 зайнятий,
+//     тому tone() недоступний і на D11 ставиться АКТИВНИЙ бузер.
+#ifndef BEAM_SENSOR_TSSP
+#define BEAM_SENSOR_TSSP 0
+#endif
 
 // ---------------- Налаштування ----------------
 const uint8_t  BEAM_MASK          = 0b11110000;  // PD4..PD7
@@ -25,7 +37,7 @@ const uint16_t CLAP_SETTLE_MS     = 300;   // чекаємо, поки плас�
 const uint8_t  SERVO_REST_DEG     = 10;    // важіль відведений, не заважає пластинам
 const uint8_t  SERVO_COCK_DEG     = 150;   // важіль розводить пластини до зачеплення засувки
 const uint16_t COCK_TIMEOUT_MS    = 1500;  // не дочекались кінцевика → FAULT
-const uint16_t SERVO_RETURN_MS    = 400;
+const uint16_t SERVO_RETURN_MS    = 400;   // час на відведення важеля; потім серво відключаємо
 const uint16_t BEAMS_CLEAR_MS     = 500;   // завіса має бути чистою стільки часу перед ARM
 const uint16_t BEAMS_STUCK_MS     = 3000;  // довше перекрито (прилипла муха/сміття) → FAULT
 const uint8_t  CONFIRM_US         = 30;    // повторне читання в ISR проти імпульсних завад
@@ -37,7 +49,11 @@ const uint8_t PIN_BUZZER   = 11;
 const uint8_t PIN_LED      = 13;
 const uint8_t PIN_ARM      = A0;
 
-const int EEPROM_ADDR_KILLS = 0;
+#if BEAM_SENSOR_TSSP
+const uint8_t PIN_IR_CARRIER = 3;  // OC2B
+#endif
+
+const int EEPROM_ADDR_CLAPS = 0;
 
 // ---------------- Стан ----------------
 enum State : uint8_t { DISARMED, WAIT_CLEAR, ARMED, FIRED, COCKING, SERVO_RETURN, FAULT };
@@ -50,8 +66,13 @@ State    state = DISARMED;
 uint32_t stateSince = 0;
 uint32_t clearSince = 0;
 uint32_t blockedSince = 0;
-uint32_t kills = 0;
+uint32_t claps = 0;         // спрацювання, а не підтверджені мухи (пил теж рахується)
 Servo    cockServo;
+uint8_t  servoTarget = SERVO_REST_DEG;
+uint32_t servoMovedAt = 0;
+#if BEAM_SENSOR_TSSP
+uint32_t buzzerOffAt = 0;
+#endif
 
 inline void solenoidOn()  { PORTB |=  _BV(PB1); }
 inline void solenoidOff() { PORTB &= ~_BV(PB1); }
@@ -79,16 +100,56 @@ ISR(PCINT2_vect) {
 
 void setupBeamInterrupts() {
   DDRD  &= ~BEAM_MASK;                          // входи
+#if BEAM_SENSOR_TSSP
+  PORTD |=  BEAM_MASK;                          // TSSP має слабку власну підтяжку — додаємо внутрішню
+#else
   PORTD &= ~BEAM_MASK;                          // без внутрішніх підтяжок (підтяжки на платі компаратора)
+#endif
   PCICR  |= _BV(PCIE2);                         // група PCINT16..23 (порт D)
   PCMSK2 |= _BV(PCINT20) | _BV(PCINT21) | _BV(PCINT22) | _BV(PCINT23);
 }
 
-// ---------------- Допоміжне ----------------
-void beep(uint16_t f, uint16_t ms) { tone(PIN_BUZZER, f, ms); }
+#if BEAM_SENSOR_TSSP
+// Timer2, Fast PWM з TOP = OCR2A: 16 МГц / 8 / (52 + 1) ≈ 37.7 кГц, шпаруватість ~50 % на OC2B (D3)
+void setupIrCarrier() {
+  pinMode(PIN_IR_CARRIER, OUTPUT);
+  TCCR2A = _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
+  TCCR2B = _BV(WGM22) | _BV(CS21);
+  OCR2A  = 52;
+  OCR2B  = 26;
+}
+#endif
 
-void saveKills() {
-  EEPROM.put(EEPROM_ADDR_KILLS, kills);
+// ---------------- Допоміжне ----------------
+#if BEAM_SENSOR_TSSP
+// Активний бузер: частота фіксована, f ігнорується; вимикається з loop()
+void beep(uint16_t, uint16_t ms) {
+  digitalWrite(PIN_BUZZER, HIGH);
+  buzzerOffAt = millis() + ms;
+}
+#else
+void beep(uint16_t f, uint16_t ms) { tone(PIN_BUZZER, f, ms); }
+#endif
+
+// Серво живе лише під час руху: у спокої відключене — не тремтить, не гуде,
+// не їсть струм і не наводить завади на завісу.
+void servoTo(uint8_t deg) {
+  cockServo.write(deg);                         // спершу кут, щоб attach() не смикнув у 90°
+  if (!cockServo.attached()) cockServo.attach(PIN_SERVO);
+  servoTarget  = deg;
+  servoMovedAt = millis();
+}
+
+void servoIdleDetach(uint32_t now) {
+  if (cockServo.attached() && servoTarget == SERVO_REST_DEG &&
+      now - servoMovedAt >= SERVO_RETURN_MS) {
+    cockServo.detach();
+    digitalWrite(PIN_SERVO, LOW);               // detach() посеред імпульсу лишає пін у HIGH
+  }
+}
+
+void saveClaps() {
+  EEPROM.put(EEPROM_ADDR_CLAPS, claps);         // put() пише лише змінені байти
 }
 
 void updateLed() {
@@ -103,7 +164,7 @@ void updateLed() {
 void fault(const __FlashStringHelper *why) {
   g_armedIsr = false;
   solenoidOff();
-  cockServo.write(SERVO_REST_DEG);
+  servoTo(SERVO_REST_DEG);
   Serial.print(F("FAULT: "));
   Serial.println(why);
   beep(400, 600);
@@ -121,16 +182,21 @@ void setup() {
   pinMode(PIN_LED, OUTPUT);
   pinMode(PIN_BUZZER, OUTPUT);
 
-  cockServo.attach(PIN_SERVO);
-  cockServo.write(SERVO_REST_DEG);
+  digitalWrite(PIN_BUZZER, LOW);
 
-  EEPROM.get(EEPROM_ADDR_KILLS, kills);
-  if (kills == 0xFFFFFFFF) kills = 0;           // чиста EEPROM
+  servoTo(SERVO_REST_DEG);                      // відведе важіль і сама відключиться
 
+  EEPROM.get(EEPROM_ADDR_CLAPS, claps);
+  if (claps == 0xFFFFFFFF) claps = 0;           // чиста EEPROM
+
+#if BEAM_SENSOR_TSSP
+  setupIrCarrier();
+  delay(50);                                    // АРУ приймачів встановлюється на несучу
+#endif
   setupBeamInterrupts();
 
-  Serial.print(F("FlyClap ready. Total kills: "));
-  Serial.println(kills);
+  Serial.print(F("FlyClap ready. Total claps: "));
+  Serial.println(claps);
   enterState(DISARMED);
 }
 
@@ -141,13 +207,27 @@ void loop() {
   if (!armSwitchOn() && state != DISARMED) {
     g_armedIsr = false;
     solenoidOff();
-    cockServo.write(SERVO_REST_DEG);
+    servoTo(SERVO_REST_DEG);
     Serial.println(F("Disarmed"));
     enterState(DISARMED);
   }
 
   // Страховка: соленоїд ніколи не тримаємо довше імпульсу (захист від перегріву)
-  if (g_fired && (now - g_fireMillis) >= SOLENOID_PULSE_MS) solenoidOff();
+  bool     fired;
+  uint32_t fireMillis;
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {           // 32-бітна змінна з ISR — читаємо атомарно
+    fired      = g_fired;
+    fireMillis = g_fireMillis;
+  }
+  if (fired && (now - fireMillis) >= SOLENOID_PULSE_MS) solenoidOff();
+
+  servoIdleDetach(now);
+#if BEAM_SENSOR_TSSP
+  if (buzzerOffAt && (int32_t)(now - buzzerOffAt) >= 0) {
+    digitalWrite(PIN_BUZZER, LOW);
+    buzzerOffAt = 0;
+  }
+#endif
 
   switch (state) {
     case DISARMED:
@@ -155,7 +235,7 @@ void loop() {
         beep(2000, 80);
         clearSince = now;
         enterState(isCocked() ? WAIT_CLEAR : COCKING);
-        if (state == COCKING) cockServo.write(SERVO_COCK_DEG);
+        if (state == COCKING) servoTo(SERVO_COCK_DEG);
       }
       break;
 
@@ -183,17 +263,17 @@ void loop() {
       break;
 
     case ARMED:
-      if (g_fired) {
-        kills++;
-        saveKills();
+      if (fired) {
+        claps++;
+        saveClaps();
         Serial.print(F("CLAP! #"));
-        Serial.println(kills);
+        Serial.println(claps);
         enterState(FIRED);
       } else if (!isCocked()) {
         // засувка зірвалась сама (вібрація) — перевзводимо
         g_armedIsr = false;
         Serial.println(F("Latch lost, re-cocking"));
-        cockServo.write(SERVO_COCK_DEG);
+        servoTo(SERVO_COCK_DEG);
         enterState(COCKING);
       }
       break;
@@ -201,14 +281,14 @@ void loop() {
     case FIRED:
       if (now - stateSince >= CLAP_SETTLE_MS) {
         solenoidOff();
-        cockServo.write(SERVO_COCK_DEG);
+        servoTo(SERVO_COCK_DEG);
         enterState(COCKING);
       }
       break;
 
     case COCKING:
       if (isCocked()) {
-        cockServo.write(SERVO_REST_DEG);
+        servoTo(SERVO_REST_DEG);
         enterState(SERVO_RETURN);
       } else if (now - stateSince > COCK_TIMEOUT_MS) {
         fault(F("cocking timeout - check latch/servo"));

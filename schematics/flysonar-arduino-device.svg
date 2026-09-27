@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" rx="0" fill="#ffffff" stroke="none" stroke-width="1.6"/>
+<text x="24" y="38" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="22" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar — Arduino-версія: як виглядає пристрій</text>
+<text x="24" y="64" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#5b6470">Вигляд збоку. Турель сторожить зону на 10–40 см: миску з фруктами, приманку, підвіконня.</text>
+<rect x="20" y="640" width="1160" height="14" rx="3" fill="#b08958" stroke="#8a6a42" stroke-width="1.6"/>
+<rect x="60" y="500" width="110" height="140" rx="10" fill="#e6f3ff" stroke="#6f9cc4" stroke-width="2"/>
+<rect x="62" y="540" width="106" height="98" rx="8" fill="#9fd0ff" stroke="none" stroke-width="1.6"/>
+<rect x="95" y="585" width="40" height="40" rx="6" fill="#333" stroke="#111" stroke-width="1.6"/>
+<text x="115" y="610" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#fff">M</text>
+<rect x="40" y="330" width="200" height="16" rx="0" fill="#b08958" stroke="#8a6a42" stroke-width="1.6"/>
+<line x1="60" y1="346" x2="60" y2="640" stroke="#8a6a42" stroke-width="6" stroke-linecap="round"/>
+<line x1="220" y1="346" x2="220" y2="640" stroke="#8a6a42" stroke-width="6" stroke-linecap="round"/>
+<rect x="60" y="250" width="160" height="80" rx="8" fill="#3a4250" stroke="#222" stroke-width="1.6"/>
+<text x="140" y="276" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#fff">Arduino Nano</text>
+<text x="140" y="292" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#cfd8e3">DC-DC, MOSFET</text>
+<circle cx="86" cy="312" r="6" fill="#7CFC00" stroke="#333" stroke-width="1.8"/>
+<rect x="110" y="304" width="30" height="16" rx="3" fill="#bbb" stroke="#333" stroke-width="1.6"/>
+<line x1="125" y1="312" x2="134" y2="298" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+<circle cx="170" cy="312" r="7" fill="#d33" stroke="#333" stroke-width="1.8"/>
+<rect x="236" y="200" width="8" height="150" rx="0" fill="#9fb3c8" stroke="#6b7480" stroke-width="1.6"/>
+<rect x="350" y="600" width="140" height="40" rx="6" fill="#4a5563" stroke="#2c333d" stroke-width="1.6"/>
+<rect x="390" y="560" width="60" height="36" rx="5" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<rect x="382" y="568" width="76" height="6" rx="2" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="434" cy="556" r="7" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="420.0" y="586" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#dfe6ee">PAN</text>
+<rect x="414" y="540" width="12" height="20" rx="0" fill="#9aa3ae" stroke="#555" stroke-width="1.6"/>
+<path d="M380,540 L460,540 L460,470 L450,470 L450,530 L390,530 L390,470 L380,470 Z" fill="#c0c7cf" stroke="#6b7480" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="394" y="450" width="52" height="30" rx="5" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<rect x="386" y="458" width="68" height="6" rx="2" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="430" cy="446" r="7" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="420.0" y="470" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#dfe6ee">TILT</text>
+<rect x="420" y="395" width="12" height="64" rx="2" fill="#1b5e9e" stroke="#0e3a63" stroke-width="1.6"/>
+<rect x="432" y="401" width="26" height="22" rx="3" fill="#c9ced6" stroke="#6b7480" stroke-width="1.6"/>
+<circle cx="458" cy="412" r="3" fill="#6b7480" stroke="#6b7480" stroke-width="1.8"/>
+<rect x="420" y="461" width="46" height="8" rx="2" fill="#8a8a8a" stroke="#444" stroke-width="1.6"/>
+<path d="M466,462 l14,3 l-14,3 Z" fill="#b08d57" stroke="#6b5530" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M115,500 C115,430 300,470 330,560 C350,620 300,600 320,520 C340,440 372,470 440,467" fill="none" stroke="#7fb3e0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M220,300 C300,300 360,380 402,452" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7,5"/>
+<path d="M840,560 Q930,660 1020,560 Z" fill="#e9e1d3" stroke="#8a7a60" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="880" cy="548" r="26" fill="#e74c3c" stroke="#7a5a2a" stroke-width="1.2"/>
+<circle cx="930" cy="540" r="30" fill="#f1c40f" stroke="#7a5a2a" stroke-width="1.2"/>
+<circle cx="982" cy="550" r="24" fill="#27ae60" stroke="#7a5a2a" stroke-width="1.2"/>
+<g transform="translate(930,505) rotate(10) scale(1.2)"><ellipse cx="-8" cy="-6" rx="9" ry="5" fill="#cfe3f5" opacity="0.85" stroke="#7f98b0" stroke-width="0.8" transform="rotate(-25 -8 -6)"/><ellipse cx="8" cy="-6" rx="9" ry="5" fill="#cfe3f5" opacity="0.85" stroke="#7f98b0" stroke-width="0.8" transform="rotate(25 8 -6)"/><ellipse cx="0" cy="0" rx="5" ry="8" fill="#2b2b2b"/><circle cx="0" cy="-9" r="3.6" fill="#3a2020"/><circle cx="-1.6" cy="-10" r="1.3" fill="#b03030"/><circle cx="1.6" cy="-10" r="1.3" fill="#b03030"/></g>
+<polygon points="460,412 930,445 930,565" fill="#9b59b6" opacity="0.08"/>
+<path d="M527.1428571428571,408.7142857142857 Q532.9428571428571,425.2857142857143 527.1428571428571,441.85714285714283" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M594.2857142857142,413.4285714285714 Q603.0857142857142,438.57142857142856 594.2857142857142,463.7142857142857" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M661.4285714285714,418.1428571428571 Q673.2285714285714,451.85714285714283 661.4285714285714,485.57142857142856" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M728.5714285714286,422.8571428571429 Q743.3714285714285,465.14285714285717 728.5714285714286,507.42857142857144" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M795.7142857142858,427.5714285714286 Q813.5142857142857,478.42857142857144 795.7142857142858,529.2857142857143" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M862.8571428571429,432.2857142857143 Q883.6571428571428,491.7142857142857 862.8571428571429,551.1428571428571" fill="none" stroke="#9b59b6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M480,465 Q705.0,345 924,509" fill="none" stroke="#2a9df4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10,6"/>
+<circle cx="924" cy="509" r="3" fill="#2a9df4" stroke="none" stroke-width="1.8"/>
+<circle cx="934" cy="501" r="3" fill="#2a9df4" stroke="none" stroke-width="1.8"/>
+<circle cx="916" cy="499" r="3" fill="#2a9df4" stroke="none" stroke-width="1.8"/>
+<circle cx="930" cy="519" r="3" fill="#2a9df4" stroke="none" stroke-width="1.8"/>
+<line x1="450" y1="412" x2="470" y2="150" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="450" cy="412" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="476" y="155" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">сонар HC-SR04 ("очі")</text>
+<line x1="474" y1="465" x2="560" y2="200" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="474" cy="465" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="566" y="205" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">сопло під сонаром (голка ∅1 мм)</text>
+<line x1="405" y1="450" x2="600" y2="260" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="405" cy="450" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="606" y="265" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">серво TILT на U-кронштейні</text>
+<line x1="425" y1="580" x2="600" y2="330" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="425" cy="580" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="606" y="335" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">серво PAN (обертає турель)</text>
+<line x1="322" y1="540" x2="330" y2="700" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="322" cy="540" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="336" y="705" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">шланг 4 мм з петлею (не тягне серви)</text>
+<line x1="115" y1="605" x2="40" y2="700" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="115" cy="605" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="46" y="705" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">резервуар + помпа R385</text>
+<line x1="140" y1="262" x2="40" y2="120" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="140" cy="262" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="46" y="125" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">електроніка (Nano, DC-DC, MOSFET) — вище рівня води</text>
+<line x1="240" y1="230" x2="280" y2="200" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="240" cy="230" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="286" y="205" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">перегородка від бризок</text>
+<line x1="125" y1="306" x2="40" y2="170" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="125" cy="306" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="46" y="175" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">тумблер ARM, LED, кнопка RECAL</text>
+<line x1="700" y1="470" x2="560" y2="600" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="700" cy="470" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="566" y="605" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">ультразвук 40 кГц (пелюстка ~15°)</text>
+<line x1="780" y1="470" x2="820" y2="380" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="780" cy="470" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="826" y="385" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">струмінь води</text>
+<line x1="930" y1="500" x2="1000" y2="440" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="930" cy="500" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="1006" y="445" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">муха сидить → постріл</text>
+</svg>

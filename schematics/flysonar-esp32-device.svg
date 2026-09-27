@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#ffffff" stroke="none" stroke-width="1.6"/>
+<text x="24" y="38" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="22" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar — ESP32-версія: як виглядає пристрій</text>
+<text x="24" y="64" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#5b6470">Вигляд збоку. Камера дивиться на підсвічену панель; комахи на ній — темні точки. Одна плата ESP32-CAM керує всім.</text>
+<defs><linearGradient id="glow" x1="0" x2="1"><stop offset="0" stop-color="#fffef2"/><stop offset="1" stop-color="#fff3b0"/></linearGradient></defs>
+<rect x="20" y="660" width="1160" height="14" rx="3" fill="#b08958" stroke="#8a6a42" stroke-width="1.6"/>
+<polygon points="860,190 1080,150 1080,600 860,620" fill="url(#glow)" stroke="#c9b458" stroke-width="3"/>
+<polygon points="852,196 866,193 866,626 852,628" fill="#d6d1b5" stroke="#9c9670"/>
+<polygon points="870,200 1072,164 1072,590 870,608" fill="#ffffff" opacity="0.35" stroke="#b9c7d6" stroke-dasharray="6,4"/>
+<path d="M900,630 L930,660 M1050,610 L1020,660" fill="none" stroke="#8a7a60" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+<g transform="translate(930,300)"><ellipse cx="-3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="0" cy="0" rx="1.6" ry="3" fill="#1b1b1b"/></g>
+<g transform="translate(1000,270)"><ellipse cx="-3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="0" cy="0" rx="1.6" ry="3" fill="#1b1b1b"/></g>
+<g transform="translate(1030,380)"><ellipse cx="-3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="0" cy="0" rx="1.6" ry="3" fill="#1b1b1b"/></g>
+<g transform="translate(910,510)"><ellipse cx="-3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="0" cy="0" rx="1.6" ry="3" fill="#1b1b1b"/></g>
+<g transform="translate(1010,490) rotate(-10) scale(0.9)"><ellipse cx="-8" cy="-6" rx="9" ry="5" fill="#cfe3f5" opacity="0.85" stroke="#7f98b0" stroke-width="0.8" transform="rotate(-25 -8 -6)"/><ellipse cx="8" cy="-6" rx="9" ry="5" fill="#cfe3f5" opacity="0.85" stroke="#7f98b0" stroke-width="0.8" transform="rotate(25 8 -6)"/><ellipse cx="0" cy="0" rx="5" ry="8" fill="#2b2b2b"/><circle cx="0" cy="-9" r="3.6" fill="#3a2020"/><circle cx="-1.6" cy="-10" r="1.3" fill="#b03030"/><circle cx="1.6" cy="-10" r="1.3" fill="#b03030"/></g>
+<path d="M900,640 L960,640 L954,656 L906,656 Z" fill="#f2c57c" stroke="#b0843d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="60" y="430" width="120" height="230" rx="26" fill="#eaf4ea" stroke="#5b8f5b" stroke-width="2"/>
+<rect x="64" y="500" width="112" height="156" rx="22" fill="#9fd0ff" stroke="none" stroke-width="1.6"/>
+<rect x="110" y="390" width="20" height="44" rx="0" fill="#5b8f5b" stroke="#3d6b3d" stroke-width="1.6"/>
+<rect x="90" y="380" width="60" height="12" rx="4" fill="#3d6b3d" stroke="#2a4a2a" stroke-width="1.6"/>
+<text x="120" y="470" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#2a4a2a">1,5–2 л</text>
+<text x="120" y="486" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#2a4a2a">до 3 бар</text>
+<rect x="250" y="590" width="50" height="40" rx="4" fill="#b0b8c2" stroke="#555" stroke-width="1.6"/>
+<rect x="262" y="570" width="26" height="22" rx="3" fill="#333" stroke="#111" stroke-width="1.6"/>
+<path d="M180,620 L250,610" fill="none" stroke="#7fb3e0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="370" y="620" width="140" height="40" rx="6" fill="#4a5563" stroke="#2c333d" stroke-width="1.6"/>
+<rect x="410" y="580" width="60" height="36" rx="5" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<rect x="402" y="588" width="76" height="6" rx="2" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="454" cy="576" r="7" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="440.0" y="606" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#dfe6ee">PAN</text>
+<rect x="434" y="560" width="12" height="20" rx="0" fill="#9aa3ae" stroke="#555" stroke-width="1.6"/>
+<path d="M400,560 L480,560 L480,490 L470,490 L470,550 L410,550 L410,490 L400,490 Z" fill="#c0c7cf" stroke="#6b7480" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="414" y="470" width="52" height="30" rx="5" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<rect x="406" y="478" width="68" height="6" rx="2" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="450" cy="466" r="7" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="440.0" y="490" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#dfe6ee">TILT</text>
+<rect x="440" y="481" width="46" height="8" rx="2" fill="#8a8a8a" stroke="#444" stroke-width="1.6"/>
+<path d="M486,482 l14,3 l-14,3 Z" fill="#b08d57" stroke="#6b5530" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M300,606 C360,600 330,520 380,500 C420,480 360,470 456,487" fill="none" stroke="#7fb3e0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="560" y1="660" x2="560" y2="380" stroke="#6b7480" stroke-width="6" stroke-linecap="round"/>
+<line x1="560" y1="380" x2="600" y2="380" stroke="#6b7480" stroke-width="6" stroke-linecap="round"/>
+<rect x="600" y="350" width="40" height="56" rx="4" fill="#1c1c1c" stroke="#000" stroke-width="1.6"/>
+<circle cx="640" cy="378" r="10" fill="#333" stroke="#777" stroke-width="1.8"/>
+<circle cx="643" cy="378" r="5" fill="#223a5e" stroke="#8aa" stroke-width="1.8"/>
+<polygon points="646,378 866,196 866,622" fill="#1f6fd1" opacity="0.06"/>
+<line x1="646" y1="378" x2="866" y2="196" stroke="#1f6fd1" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="5,5"/>
+<line x1="646" y1="378" x2="866" y2="622" stroke="#1f6fd1" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="5,5"/>
+<rect x="230" y="250" width="170" height="76" rx="8" fill="#3a4250" stroke="#222" stroke-width="1.6"/>
+<text x="315" y="276" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#fff">DC-DC 5 В, ключ</text>
+<text x="315" y="292" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#cfd8e3">клапана, ARM</text>
+<rect x="290" y="302" width="30" height="16" rx="3" fill="#bbb" stroke="#333" stroke-width="1.6"/>
+<line x1="305" y1="310" x2="314" y2="296" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+<path d="M400,300 C480,300 520,340 600,370" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7,5"/>
+<path d="M315,326 C315,400 360,430 424,462" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7,5"/>
+<path d="M280,326 C280,450 275,540 275,570" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7,5"/>
+<polygon points="500,485 956,394 964,446" fill="#2a9df4" opacity="0.22"/>
+<path d="M500,485 Q730.0,425 960,420" fill="none" stroke="#2a9df4" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="8,6"/>
+<g transform="translate(960,420)"><ellipse cx="-3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="3" cy="-2" rx="3.5" ry="1.8" fill="#bcd3ea" opacity="0.8"/><ellipse cx="0" cy="0" rx="1.6" ry="3" fill="#1b1b1b"/></g>
+<line x1="646" y1="700" x2="860" y2="700" stroke="#1b1b1b" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M646,700 l10,-5 l0,10 Z M860,700 l-10,-5 l0,10 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<text x="753" y="720" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1b1b1b">~30 см</text>
+<line x1="620" y1="360" x2="600" y2="150" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="620" cy="360" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="606" y="155" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">ESP32-CAM: камера + мозок</text>
+<line x1="760" y1="290" x2="720" y2="200" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="760" cy="290" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="726" y="205" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">поле зору камери</text>
+<line x1="1076" y1="250" x2="1090" y2="110" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="1076" cy="250" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="1084" y="115" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1b1b1b">LED-панель A4 + плівка</text>
+<line x1="960" y1="420" x2="1100" y2="700" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="960" cy="420" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="1094" y="705" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1b1b1b">мошка 1–3 мм = темна точка</text>
+<line x1="930" y1="648" x2="800" y2="750" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="930" cy="648" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="794" y="755" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1b1b1b">приманка біля панелі</text>
+<line x1="440" y1="600" x2="440" y2="745" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="440" cy="600" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="446" y="750" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">серво PAN / TILT (цифрові)</text>
+<line x1="494" y1="485" x2="470" y2="225" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="494" cy="485" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="476" y="230" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">латунне сопло-розпилювач</text>
+<line x1="275" y1="590" x2="210" y2="780" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="275" cy="590" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="216" y="785" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">клапан 12 В (прямої дії)</text>
+<line x1="120" y1="560" x2="40" y2="745" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="120" cy="560" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="46" y="750" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">бак-обприскувач під тиском</text>
+<line x1="305" y1="300" x2="40" y2="180" stroke="#6b7480" stroke-width="1.3" stroke-linecap="round"/>
+<circle cx="305" cy="300" r="3.5" fill="#6b7480" stroke="#6b7480" stroke-width="1"/>
+<text x="46" y="185" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">живлення, ключ клапана, тумблер ARM</text>
+</svg>
