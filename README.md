@@ -16,10 +16,13 @@ fly-defense/
 │   └── flysonar/flysonar.ino   # сонар-турель з водометом
 ├── docs/
 │   ├── flyclap.md              # механіка, BOM, схема, налаштування
-│   └── flysonar.md
+│   ├── flysonar.md
+│   └── shopping-list.md        # зведений список покупок для обох проєктів
 ├── platformio.ini
 └── LICENSE
 ```
+
+Що купити — див. [docs/shopping-list.md](docs/shopping-list.md).
 
 ## Збірка
 
