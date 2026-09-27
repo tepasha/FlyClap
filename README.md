@@ -26,7 +26,7 @@ fly-defense/
 │   └── shopping-list.md        # зведений список покупок для обох проєктів
 ├── schematics/                 # схеми підключення та ілюстрації (SVG + PNG)
 ├── cad/flyclap/                # корпус FlyClap для 3D-друку: STEP (FreeCAD), STL, модель CadQuery
-├── cad/flysonar/               # турель FlySonar (обидві версії) для 3D-друку
+├── cad/flysonar/               # турель FlySonar (обидві версії) і підставка LED-панелі для 3D-друку
 ├── tools/                      # хост-тести, генератор схем (diagrams.py)
 ├── platformio.ini
 └── LICENSE

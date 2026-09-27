@@ -15,7 +15,7 @@ Arduino-версія (сонар HC-SR04) описана в [flysonar.md](flyson
 
 ![FlySonar, ESP32-версія — як виглядає пристрій](../schematics/flysonar-esp32-device.svg)
 
-> **Турель і кріплення камери для 3D-друку:** [cad/flysonar](../cad/flysonar/README.md) (головка `head_nozzle` + `camera_post` / `camera_cradle`).
+> **Для 3D-друку:** турель, кріплення камери й підставка LED-панелі з жолобом — [cad/flysonar](../cad/flysonar/README.md) (головка `head_nozzle`, `camera_post` / `camera_cradle`, `stand_*`).
 
 ## Чому саме так
 
