@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<rect x="0" y="0" width="1200" height="900" rx="0" fill="#ffffff" stroke="none" stroke-width="1.6"/>
+<text x="24" y="38" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="22" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar — Arduino-версія: схема підключення</text>
+<rect x="24" y="60" width="300" height="430" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="38" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Живлення</text>
+<rect x="44" y="100" width="130" height="64" rx="6" fill="#3d3d3d" stroke="#222" stroke-width="1.6"/>
+<text x="109" y="128" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#fff">БЖ 12 В</text>
+<text x="109" y="148" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#ddd">2 А</text>
+<polyline points="174,122 290,122" fill="none" stroke="#d62828" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="240" cy="122" r="4" fill="#d62828" stroke="#d62828" stroke-width="1"/>
+<polyline points="174,152 205,152 205,170" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="205" y1="170" x2="205" y2="180" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="193" y1="180" x2="217" y2="180" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="197" y1="184" x2="213" y2="184" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="201" y1="188" x2="209" y2="188" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="44" y="310" width="130" height="76" rx="6" fill="#1f7a4d" stroke="#145236" stroke-width="1.6"/>
+<text x="109" y="338" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#fff">DC-DC</text>
+<text x="109" y="357" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#e6f4ec">5–6 В ≥2 А</text>
+<polyline points="240,122 240,330 174,330" fill="none" stroke="#d62828" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="174,370 205,370 205,388" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="205" y1="388" x2="205" y2="398" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="193" y1="398" x2="217" y2="398" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="197" y1="402" x2="213" y2="402" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="201" y1="406" x2="209" y2="406" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<polyline points="109,386 109,440 224,440" fill="none" stroke="#8e44ad" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="150" cy="440" r="4" fill="#8e44ad" stroke="#8e44ad" stroke-width="1"/>
+<line x1="150" y1="440" x2="150" y2="452.0" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="150" y1="460.0" x2="150" y2="472" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="138" y1="452.0" x2="162" y2="452.0" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M138,463.0 Q150,457.0 162,463.0" fill="none" stroke="#1b1b1b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+<text x="134" y="450.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#1b1b1b">+</text>
+<text x="132" y="461.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#1b1b1b">1000 мкФ</text>
+<line x1="150" y1="472" x2="150" y2="482" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="138" y1="482" x2="162" y2="482" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="142" y1="486" x2="158" y2="486" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="146" y1="490" x2="154" y2="490" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<text x="230" y="445" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#8e44ad">V_servo → серви</text>
+<text x="180" y="105" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#d62828">+12V → помпа</text>
+<rect x="360" y="140" width="140" height="380" rx="8" fill="#0f5c8c" stroke="#0b3a58" stroke-width="2"/>
+<text x="430.0" y="166" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="middle" font-weight="bold" fill="#ffffff">Arduino Nano</text>
+<text x="430.0" y="182" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#d7e6f3">(або Uno)</text>
+<rect x="355" y="229" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="372" y="239" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#ffffff">VIN</text>
+<rect x="355" y="301" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="372" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#ffffff">5V</text>
+<rect x="355" y="373" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="372" y="383" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#ffffff">GND</text>
+<rect x="495" y="193" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D0</text>
+<rect x="495" y="229" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="239" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D2</text>
+<rect x="495" y="265" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="275" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D3</text>
+<rect x="495" y="301" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D4</text>
+<rect x="495" y="337" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="347" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D5</text>
+<rect x="495" y="373" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="383" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D9</text>
+<rect x="495" y="409" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="419" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D10</text>
+<rect x="495" y="445" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="455" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">D13</text>
+<rect x="495" y="481" width="10" height="10" rx="0" fill="#e9c46a" stroke="#8a6d1f" stroke-width="1"/>
+<text x="488" y="491" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#ffffff">A0</text>
+<polyline points="290,122 290,234 360,234" fill="none" stroke="#d62828" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="360,306 310,306" fill="none" stroke="#f08c00" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="304" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="end" font-weight="bold" fill="#f08c00">+5V</text>
+<polyline points="360,378 336,378 336,394" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="336" y1="394" x2="336" y2="404" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="324" y1="404" x2="348" y2="404" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="328" y1="408" x2="344" y2="408" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="332" y1="412" x2="340" y2="412" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<polyline points="500,198 516,198" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5,4"/>
+<text x="520" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">← ESP32 GPIO14 (опц.)</text>
+<polyline points="500,234 516,234" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="239" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ TRIG</text>
+<polyline points="500,270 516,270" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="275" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ECHO</text>
+<polyline points="500,306 516,306" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← кнопка RECAL</text>
+<polyline points="500,342 516,342" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="347" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ затвор MOSFET</text>
+<polyline points="500,378 516,378" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="383" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво PAN</text>
+<polyline points="500,414 516,414" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="419" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво TILT</text>
+<polyline points="500,450 516,450" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="455" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">вбудований LED</text>
+<polyline points="500,486 516,486" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="520" y="491" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← тумблер ARM</text>
+<rect x="700" y="60" width="480" height="230" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Сонар HC-SR04</text>
+<rect x="760" y="110" width="200" height="90" rx="6" fill="#1b5e9e" stroke="#0e3a63" stroke-width="1.6"/>
+<circle cx="805" cy="150" r="30" fill="#c9ced6" stroke="#6b7480" stroke-width="2"/>
+<circle cx="805" cy="150" r="20" fill="#9aa3ae" stroke="#6b7480" stroke-width="1.8"/>
+<circle cx="915" cy="150" r="30" fill="#c9ced6" stroke="#6b7480" stroke-width="2"/>
+<circle cx="915" cy="150" r="20" fill="#9aa3ae" stroke="#6b7480" stroke-width="1.8"/>
+<text x="860" y="196" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#fff">HC-SR04</text>
+<line x1="800" y1="200" x2="800" y2="225" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="800" y="240" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">VCC</text>
+<line x1="840" y1="200" x2="840" y2="225" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="840" y="240" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">TRIG</text>
+<line x1="880" y1="200" x2="880" y2="225" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="880" y="240" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">ECHO</text>
+<line x1="920" y1="200" x2="920" y2="225" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="920" y="240" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">GND</text>
+<polyline points="800,225 800,250" fill="none" stroke="#f08c00" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="800" y="267" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f08c00">+5V</text>
+<polyline points="840,225 840,250" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="840" y="267" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">D2</text>
+<polyline points="880,225 880,250" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="880" y="267" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">D3</text>
+<polyline points="920,225 920,250" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="920" y1="248" x2="920" y2="258" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="908" y1="258" x2="932" y2="258" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="912" y1="262" x2="928" y2="262" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="916" y1="266" x2="924" y2="266" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1130" y1="120" x2="1130" y2="141.0" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1130" y1="149.0" x2="1130" y2="170" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1118" y1="141.0" x2="1142" y2="141.0" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1118" y1="149.0" x2="1142" y2="149.0" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1112" y="150.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#1b1b1b">100 нФ</text>
+<text x="1130" y="110" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">VCC</text>
+<line x1="1130" y1="172" x2="1130" y2="182" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1118" y1="182" x2="1142" y2="182" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1122" y1="186" x2="1138" y2="186" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1126" y1="190" x2="1134" y2="190" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="700" y="305" width="480" height="230" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="714" y="329" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Помпа R385 (або клапан 12 В — так само)</text>
+<text x="716" y="475" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D5</text>
+<polyline points="740,470 752,470" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="752" y1="470" x2="764.0" y2="470" stroke="#1f6fd1" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="764.0" y="463" width="36.0" height="14" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<line x1="800.0" y1="470" x2="812" y2="470" stroke="#1f6fd1" stroke-width="2.2" stroke-linecap="round"/>
+<text x="782.0" y="458" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#1b1b1b">100 Ом</text>
+<circle cx="830" cy="470" r="4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<polyline points="812,470 850,470" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="830" y1="470" x2="830" y2="477.0" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="823" y="477.0" width="14" height="21.0" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<line x1="830" y1="498.0" x2="830" y2="505" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="818" y="492.5" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#1b1b1b">10 кОм</text>
+<line x1="830" y1="507" x2="830" y2="517" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="818" y1="517" x2="842" y2="517" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="822" y1="521" x2="838" y2="521" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="826" y1="525" x2="834" y2="525" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="850" y1="470" x2="866" y2="470" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="866" y1="454" x2="866" y2="486" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="872" y1="450" x2="872" y2="462" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="872" y1="464" x2="872" y2="476" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="872" y1="478" x2="872" y2="490" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M872,456 L880,456 L880,440" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M872,484 L880,484 L880,500" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M872,470 L880,470 L880,484" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M873,470 l7,-4 l0,8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<text x="888" y="474" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1b1b1b">IRLZ44N</text>
+<text x="852" y="464" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#5b6470">G</text>
+<text x="884" y="452" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#5b6470">D</text>
+<text x="884" y="498" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#5b6470">S</text>
+<polyline points="880,500 880,510" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="880" y1="508" x2="880" y2="518" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="868" y1="518" x2="892" y2="518" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="872" y1="522" x2="888" y2="522" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="876" y1="526" x2="884" y2="526" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<polyline points="880,440 880,428 1000,428" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="990" y1="360" x2="1010" y2="360" stroke="#d62828" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1000" y1="360" x2="1000" y2="370" stroke="#d62828" stroke-width="2.4" stroke-linecap="round"/>
+<text x="1000" y="354" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#d62828">+12V</text>
+<circle cx="1000" cy="376" r="4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<line x1="1000" y1="370" x2="1000" y2="386" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1000" cy="402" r="16" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<text x="1000" y="407" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#1b1b1b">M</text>
+<text x="1024" y="407" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b"></text>
+<text x="972" y="407" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#1b1b1b">помпа</text>
+<line x1="1000" y1="418" x2="1000" y2="428" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1000" cy="428" r="4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1"/>
+<polyline points="1000,376 1070,376" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="1070" y1="376" x2="1070" y2="393.0" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1070" y1="411.0" x2="1070" y2="428" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M1060,411.0 L1080,411.0 L1070,393.0 Z" fill="#fff" stroke="#1b1b1b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1060" y1="393.0" x2="1080" y2="393.0" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1086" y="407.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">1N5819</text>
+<polyline points="1070,428 1000,428" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="700" y="550" width="480" height="330" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="714" y="574" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серви, кнопка RECAL, ARM</text>
+<rect x="900" y="590" width="110" height="56" rx="6" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="984" cy="618" r="12" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="908" y="612" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#ffffff">PAN</text>
+<text x="908" y="632" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#cfd8e3">MG90S</text>
+<text x="716" y="609" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D9</text>
+<polyline points="756,604 900,604" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="900,618 850,618" fill="none" stroke="#8e44ad" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="846" y="623" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="end" font-weight="bold" fill="#8e44ad">V_servo</text>
+<polyline points="900,632 870,632 870,640" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="870" y1="638" x2="870" y2="648" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="858" y1="648" x2="882" y2="648" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="862" y1="652" x2="878" y2="652" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="866" y1="656" x2="874" y2="656" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="900" y="680" width="110" height="56" rx="6" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
+<circle cx="984" cy="708" r="12" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
+<text x="908" y="702" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#ffffff">TILT</text>
+<text x="908" y="722" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#cfd8e3">MG90S</text>
+<text x="716" y="699" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D10</text>
+<polyline points="756,694 900,694" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="900,708 850,708" fill="none" stroke="#8e44ad" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="846" y="713" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="end" font-weight="bold" fill="#8e44ad">V_servo</text>
+<polyline points="900,722 870,722 870,730" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="870" y1="728" x2="870" y2="738" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="858" y1="738" x2="882" y2="738" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="862" y1="742" x2="878" y2="742" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="866" y1="746" x2="874" y2="746" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<text x="716" y="805" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D4</text>
+<polyline points="752,800 790,800" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="790" cy="800" r="3.5" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<circle cx="830" cy="800" r="3.5" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<line x1="793" y1="798" x2="828" y2="786" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<polyline points="833,800 850,800" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="850" y1="800" x2="850" y2="810" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="838" y1="810" x2="862" y2="810" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="842" y1="814" x2="858" y2="814" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="846" y1="818" x2="854" y2="818" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<text x="880" y="805" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">кнопка RECAL (перекалібрувати фон)</text>
+<text x="716" y="845" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">A0</text>
+<polyline points="752,840 790,840" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="790" cy="840" r="3.5" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<circle cx="830" cy="840" r="3.5" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+<line x1="793" y1="838" x2="828" y2="826" stroke="#1b1b1b" stroke-width="2.2" stroke-linecap="round"/>
+<polyline points="833,840 850,840" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="850" y1="840" x2="850" y2="850" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="838" y1="850" x2="862" y2="850" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="842" y1="854" x2="858" y2="854" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="846" y1="858" x2="854" y2="858" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
+<text x="880" y="845" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">тумблер ARM (LOW = стріляти дозволено)</text>
+<rect x="24" y="540" width="660" height="240" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="38" y="564" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Позначення</text>
+<line x1="42" y1="586" x2="82" y2="586" stroke="#d62828" stroke-width="4" stroke-linecap="round"/>
+<text x="94" y="590" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">+12 В (БЖ): помпа / клапан, VIN Nano, вхід DC-DC</text>
+<line x1="42" y1="610" x2="82" y2="610" stroke="#f08c00" stroke-width="4" stroke-linecap="round"/>
+<text x="94" y="614" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">+5 В логіка (пін 5V Nano): HC-SR04</text>
+<line x1="42" y1="634" x2="82" y2="634" stroke="#8e44ad" stroke-width="4" stroke-linecap="round"/>
+<text x="94" y="638" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">V_servo 5–6 В (DC-DC): лише серви</text>
+<line x1="42" y1="658" x2="82" y2="658" stroke="#1f6fd1" stroke-width="4" stroke-linecap="round"/>
+<text x="94" y="662" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">сигнали</text>
+<line x1="42" y1="682" x2="82" y2="682" stroke="#222222" stroke-width="4" stroke-linecap="round"/>
+<text x="94" y="686" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">земля (⏚) — спільна для всього</text>
+<text x="42" y="710" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Серви й помпу НЕ живити від піна 5V Nano — лише від DC-DC / БЖ.</text>
+<text x="42" y="730" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">D0 — лише для режиму "очі" (ESP32 шле кути). На час прошивки Nano</text>
+<text x="42" y="750" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">від'єднувати. Клапан 12 В підключається замість помпи тим самим ключем.</text>
+<text x="42" y="770" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Електроніку — вище рівня води й за перегородкою.</text>
+</svg>

@@ -23,13 +23,23 @@ fly-defense/
 │   ├── flyclap.md              # механіка, BOM, схема, налаштування
 │   ├── flysonar.md             # Arduino-версія
 │   ├── flysonar-esp32.md       # ESP32-версія: фон, підключення, калібрування
+│   ├── images/                 # схеми підключення та ілюстрації (SVG)
 │   └── shopping-list.md        # зведений список покупок для обох проєктів
-├── tools/                      # хост-тести: зір, симуляція турелі
+├── tools/                      # хост-тести, генератор схем (diagrams.py)
 ├── platformio.ini
 └── LICENSE
 ```
 
 Що купити — див. [docs/shopping-list.md](docs/shopping-list.md).
+
+## Як виглядають пристрої
+
+| FlyClap | FlySonar — Arduino | FlySonar — ESP32 |
+|---|---|---|
+| ![FlyClap](docs/images/flyclap-device.svg) | ![FlySonar Arduino](docs/images/flysonar-arduino-device.svg) | ![FlySonar ESP32](docs/images/flysonar-esp32-device.svg) |
+| [схема підключення](docs/images/flyclap-wiring.svg) · [варіант TSSP4038](docs/images/flyclap-tssp.svg) | [схема підключення](docs/images/flysonar-arduino-wiring.svg) | [схема підключення](docs/images/flysonar-esp32-wiring.svg) |
+
+Картинки генерує `tools/diagrams.py` (лише стандартна бібліотека Python): правите скрипт → `python3 tools/diagrams.py`.
 
 ## Збірка
 
