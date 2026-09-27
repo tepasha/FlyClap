@@ -35,7 +35,7 @@ pio device monitor -b 115200
 
 > Клони Uno на CH340 потребують драйвера CH340 (Windows/macOS), якщо плату не видно як COM/tty-порт.
 >
-> Прошивки використовують лише ресурси ATmega328P і працюють без змін і на Nano. Для нього замініть `board = uno` на `nanoatmega328new` у `platformio.ini`.
+> Прошивки використовують лише ресурси ATmega328P і працюють без змін і на Nano. Для нього є окремі середовища: `pio run -e flyclap_nano -t upload`, `pio run -e flysonar_nano -t upload`.
 
 ## Безпека
 

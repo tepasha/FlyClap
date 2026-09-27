@@ -35,12 +35,14 @@ const uint8_t TILT_CELLS = sizeof(TILT_LEVELS);
 // ---------------- Сонар ----------------
 const uint16_t ECHO_TIMEOUT_US = 6000;   // ~1 м — далі нас не цікавить
 const uint16_t PING_GAP_MS     = 30;     // пауза між пінгами, щоб не ловити старе ехо
+const uint16_t ECHO_IDLE_TIMEOUT_MS = 50; // без ехо HC-SR04 тримає ECHO у HIGH ~38 мс
 const uint16_t NO_ECHO         = 999;
 const uint8_t  MIN_CM          = 8;      // ближче — мертва зона HC-SR04 / сам корпус
 const uint8_t  MAX_CM          = 60;     // далі муху вже не видно в шумі
 const uint8_t  DELTA_CM        = 10;     // на скільки ближче за фон має бути ціль
 const uint8_t  SIMILAR_CM      = 6;      // "та сама відстань" для перевірки ширини
 const uint8_t  WIDE_LIMIT      = 2;      // стільки сусідів з тим самим ехо = великий об'єкт
+const uint16_t FRESH_MS        = 400;    // вимір сусідньої клітинки, свіжіший за це, не повторюємо
 
 // ---------------- Водомет ----------------
 const int8_t   PAN_NOZZLE_OFFSET  = 0;     // якщо сопло збоку від сонара — поправка, град
@@ -59,6 +61,8 @@ const uint8_t PIN_PAN = 9, PIN_TILT = 10, PIN_LED = 13, PIN_ARM = A0;
 
 Servo panServo, tiltServo;
 uint16_t background[TILT_CELLS][PAN_CELLS];
+uint16_t lastScan[TILT_CELLS][PAN_CELLS];    // останній вимір у кожній клітинці...
+uint32_t lastScanAt[TILT_CELLS][PAN_CELLS];  // ...і коли його зроблено
 uint32_t cooldownUntil[TILT_CELLS];          // кулдаун по рядах (дешево по RAM)
 uint32_t shotsTotal = 0;
 uint8_t  curPan = 90, curTilt = 95;
@@ -68,6 +72,16 @@ uint8_t  curPan = 90, curTilt = 95;
 uint16_t pingCm() {
   static uint32_t lastPing = 0;
   while (millis() - lastPing < PING_GAP_MS) { /* чекаємо затухання відлуння */ }
+
+  // Якщо попередній пінг не отримав ехо, сенсор ще тримає ECHO у HIGH і проігнорує
+  // новий тригер. Дочекаємось LOW, інакше кожен другий вимір губиться.
+  uint32_t waitStart = millis();
+  while (digitalRead(PIN_ECHO) == HIGH) {
+    if (millis() - waitStart > ECHO_IDLE_TIMEOUT_MS) {   // сенсор завис/відключений
+      lastPing = millis();
+      return NO_ECHO;
+    }
+  }
   lastPing = millis();
 
   digitalWrite(PIN_TRIG, LOW);  delayMicroseconds(2);
@@ -87,9 +101,10 @@ uint16_t median3(uint16_t a, uint16_t b, uint16_t c) {
 
 uint16_t pingMedian3() { return median3(pingCm(), pingCm(), pingCm()); }
 
-void moveTo(uint8_t pan, uint8_t tilt) {
-  pan  = constrain(pan, 0, 180);
-  tilt = constrain(tilt, 0, 180);
+// Кути в int: поправки прицілу можуть дати <0 або >180, обмежуємо до приведення в uint8_t
+void moveTo(int panDeg, int tiltDeg) {
+  uint8_t pan  = constrain(panDeg, 0, 180);
+  uint8_t tilt = constrain(tiltDeg, 0, 180);
   uint8_t dist = max(abs((int)pan - curPan), abs((int)tilt - curTilt));
   panServo.write(pan);
   tiltServo.write(tilt);
@@ -99,11 +114,21 @@ void moveTo(uint8_t pan, uint8_t tilt) {
 
 inline uint8_t panOf(uint8_t i) { return PAN_MIN + i * PAN_STEP; }
 inline bool armed() { return digitalRead(PIN_ARM) == LOW; }
+inline bool timeReached(uint32_t t) { return (int32_t)(millis() - t) >= 0; }  // стійко до переповнення millis()
 
 bool isForeground(uint16_t d, uint16_t bg) {
   if (d == NO_ECHO || d < MIN_CM || d > MAX_CM) return false;
   if (bg == NO_ECHO) return true;               // раніше там була порожнеча
   return d + DELTA_CM < bg;
+}
+
+// Навести сонар на клітинку, виміряти й запам'ятати результат
+uint16_t measureCell(uint8_t t, uint8_t p) {
+  moveTo(panOf(p), TILT_LEVELS[t]);
+  uint16_t d = pingCm();
+  lastScan[t][p]   = d;
+  lastScanAt[t][p] = millis();
+  return d;
 }
 
 // ============ Калібрування фону ============
@@ -123,8 +148,10 @@ void calibrate() {
         s[j + 1] = v;
       }
       background[t][p] = s[2];
+      lastScan[t][p]   = s[2];
+      lastScanAt[t][p] = millis() - FRESH_MS;   // одразу "несвіжий"
     }
-    cooldownUntil[t] = 0;
+    cooldownUntil[t] = millis();
   }
   digitalWrite(PIN_LED, LOW);
   Serial.println(F("Background ready"));
@@ -132,15 +159,16 @@ void calibrate() {
 
 // ============ Логіка цілі ============
 
-// Скільки сусідніх кутів бачать об'єкт на тій самій відстані
+// Скільки сусідніх кутів бачать об'єкт на тій самій відстані.
+// Клітинки, які змійка щойно пройшла, беремо з lastScan — серво не мотаються
+// туди-сюди. Фізично перевимірюємо лише застарілі (зазвичай ті, що попереду).
 uint8_t countWideNeighbors(uint8_t t, uint8_t p, uint16_t d) {
   uint8_t n = 0;
   for (int8_t off = -2; off <= 2; off++) {
     if (off == 0) continue;
     int8_t q = p + off;
     if (q < 0 || q >= PAN_CELLS) continue;
-    moveTo(panOf(q), TILT_LEVELS[t]);
-    uint16_t dn = pingCm();
+    uint16_t dn = (millis() - lastScanAt[t][q] < FRESH_MS) ? lastScan[t][q] : measureCell(t, q);
     if (isForeground(dn, background[t][q]) && abs((int)dn - (int)d) <= SIMILAR_CM) n++;
   }
   return n;
@@ -148,8 +176,8 @@ uint8_t countWideNeighbors(uint8_t t, uint8_t p, uint16_t d) {
 
 void aimAndFire(uint8_t t, uint8_t p, uint16_t d) {
   int tiltComp = (int)(BALLISTIC_DEG_PER_CM * d + 0.5f) + TILT_NOZZLE_OFFSET;
-  uint8_t aimPan  = panOf(p) + PAN_NOZZLE_OFFSET;
-  uint8_t aimTilt = TILT_LEVELS[t] + TILT_UP_SIGN * tiltComp;
+  int aimPan  = constrain((int)panOf(p) + PAN_NOZZLE_OFFSET, 0, 180);
+  int aimTilt = constrain((int)TILT_LEVELS[t] + TILT_UP_SIGN * tiltComp, 0, 180);
 
   moveTo(aimPan, aimTilt);
   digitalWrite(PIN_PUMP, HIGH);
@@ -227,9 +255,8 @@ void loop() {
 
   digitalWrite(PIN_LED, armed() ? ((millis() / 250) % 2) : LOW);
 
-  if (millis() >= cooldownUntil[t]) {
-    moveTo(panOf(p), TILT_LEVELS[t]);
-    uint16_t d = pingCm();
+  if (timeReached(cooldownUntil[t])) {
+    uint16_t d = measureCell(t, p);
     if (isForeground(d, background[t][p])) {
       engage(t, p, d);
     }
