@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlyClap — відкритий проєкт боротьби з мухами на Arduino та ESP32</title>
+<meta name="description" content="FlyClap: хлопавка з ІЧ-завісою (реакція ~25 мс) і турель-водомет, що бачить навіть мошку. Відкриті прошивки, схеми й 3D-моделі. Підтримайте збирання першого прототипу.">
+<meta property="og:title" content="FlyClap — мухобійка, що не промахується">
+<meta property="og:description" content="Відкритий DIY-проєкт на Arduino та ESP32: прошивки, схеми, 3D-моделі для друку.">
+<meta property="og:image" content="img/flyclap-case.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪰</text></svg>">
+<style>
+  :root {
+    --bg: #ffffff; --bg-soft: #f5f7fa; --ink: #16181d; --muted: #5b6470; --line: #e3e7ee;
+    --accent: #e8741c; --accent-ink: #ffffff; --accent-soft: #fff1e6; --dark: #11151c; --dark-2: #1b2130;
+    --ok: #1f9d55; --radius: 16px; --shadow: 0 10px 30px rgba(17, 21, 28, .08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1218; --bg-soft: #151a23; --ink: #e9edf3; --muted: #9aa4b2; --line: #262d3a;
+            --accent-soft: #2a1d12; --shadow: 0 10px 30px rgba(0, 0, 0, .35); }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+         color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 17px; }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .btn { display: inline-flex; align-items: center; gap: .5em; padding: .8em 1.4em; border-radius: 999px;
+         font-weight: 700; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 1rem; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { filter: brightness(1.07); }
+  .btn-ghost { border-color: rgba(255, 255, 255, .35); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; }
+  .btn-line { border-color: var(--line); color: var(--ink); background: var(--bg); }
+  .btn-line:hover { border-color: var(--accent); }
+
+  /* навігація */
+  header.nav { position: sticky; top: 0; z-index: 10; background: rgba(17, 21, 28, .92); backdrop-filter: blur(8px); }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .logo { color: #fff; font-weight: 800; text-decoration: none; font-size: 1.15rem; letter-spacing: .2px; }
+  .nav-links { display: flex; gap: 22px; align-items: center; }
+  .nav-links a { color: #cfd6e2; text-decoration: none; font-size: .95rem; }
+  .nav-links a:hover { color: #fff; }
+  .nav-links .btn { padding: .45em 1.1em; color: #fff; }
+  @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
+
+  /* герой */
+  .hero { background: radial-gradient(1200px 500px at 80% -10%, #2b3550 0%, var(--dark) 55%); color: #fff; padding: 72px 0 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+  .eyebrow { display: inline-block; background: rgba(232, 116, 28, .16); color: #ffb37a; border: 1px solid rgba(232, 116, 28, .35);
+             padding: .25em .8em; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+  .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.1; margin: 18px 0 16px; letter-spacing: -.5px; }
+  .hero h1 em { font-style: normal; color: #ff9a4d; }
+  .hero p.lead { color: #c9d1de; font-size: 1.15rem; margin: 0 0 28px; max-width: 34em; }
+  .hero .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-img { background: #fff; border-radius: 20px; padding: 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, .45); }
+  .hero-img img { border-radius: 12px; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero { padding: 48px 0; } }
+
+  /* цифри */
+  .stats { background: var(--dark-2); color: #fff; }
+  .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-top: 26px; padding-bottom: 26px; }
+  .stat b { display: block; font-size: 1.7rem; color: #ff9a4d; line-height: 1.2; }
+  .stat span { color: #b7c0cd; font-size: .92rem; }
+  @media (max-width: 760px) { .stats .wrap { grid-template-columns: repeat(2, 1fr); row-gap: 20px; } }
+
+  section { padding: 84px 0; }
+  section.soft { background: var(--bg-soft); }
+  h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.3px; }
+  .sub { color: var(--muted); max-width: 46em; margin: 0 0 40px; font-size: 1.08rem; }
+
+  /* картки */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .grid3, .grid2 { grid-template-columns: 1fr; } }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+          box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .card .pic { background: #fff; border-bottom: 1px solid var(--line); aspect-ratio: 4 / 3; display: flex; align-items: center; }
+  .card .pic img { width: 100%; height: 100%; object-fit: contain; }
+  .card .body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { margin: 0; font-size: 1.25rem; }
+  .tag { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--accent); background: var(--accent-soft);
+         padding: .15em .6em; border-radius: 6px; margin-right: 6px; }
+  .card ul { margin: 0; padding-left: 1.1em; color: var(--muted); }
+  .card .more { margin-top: auto; font-weight: 600; text-decoration: none; }
+
+  /* як працює */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 22px 56px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: -2px; width: 38px; height: 38px; border-radius: 50%;
+                      background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .steps li::after { content: ""; position: absolute; left: 18px; top: 40px; bottom: 4px; width: 2px; background: var(--line); }
+  .steps li:last-child::after { display: none; }
+  .steps b { display: block; }
+  .steps span { color: var(--muted); }
+  .how h3 { margin: 0 0 18px; font-size: 1.3rem; }
+  .figure { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; margin-top: 8px; }
+
+  /* відкритий код */
+  .repo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .repo { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .repo { grid-template-columns: 1fr; } }
+  .repo a { display: block; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; text-decoration: none;
+            color: var(--ink); background: var(--bg); }
+  .repo a:hover { border-color: var(--accent); }
+  .repo b { display: block; margin-bottom: 4px; }
+  .repo span { color: var(--muted); font-size: .95rem; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .gallery figure { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+  .gallery figcaption { font-size: .88rem; color: #5b6470; padding: 8px 12px; border-top: 1px solid #e3e7ee; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+
+  /* статус */
+  .status { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { .status { grid-template-columns: 1fr; } }
+  .status .box { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: var(--bg); }
+  .status h3 { margin: 0 0 12px; }
+  .status ul { list-style: none; padding: 0; margin: 0; }
+  .status li { padding: 7px 0 7px 30px; position: relative; }
+  .status .done li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 800; }
+  .status .todo li::before { content: "○"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+
+  /* донати */
+  .donate { background: var(--dark); color: #fff; }
+  .donate .sub { color: #b7c0cd; }
+  .donate-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: start; }
+  @media (max-width: 900px) { .donate-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--dark-2); border: 1px solid #2b3446; border-radius: var(--radius); padding: 24px; }
+  .panel h3 { margin: 0 0 14px; }
+  .budget { list-style: none; margin: 0; padding: 0; }
+  .budget li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #2b3446; color: #d6dde8; }
+  .budget li:last-child { border-bottom: 0; }
+  .budget .amt { color: #ffb37a; font-weight: 700; white-space: nowrap; }
+  .progress { margin: 18px 0 6px; background: #0b0e14; border-radius: 999px; height: 14px; overflow: hidden; border: 1px solid #2b3446; }
+  .progress > div { height: 100%; background: linear-gradient(90deg, #e8741c, #ffb37a); width: 0; transition: width 1s ease; }
+  .progress-label { color: #b7c0cd; font-size: .95rem; }
+  .methods { display: grid; gap: 14px; }
+  .method { background: var(--dark-2); border: 1px solid #2b3446; border-radius: 14px; padding: 18px 20px;
+            display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .method .name { font-weight: 700; }
+  .method .hint { color: #9aa4b2; font-size: .9rem; }
+  .method code { font-family: ui-monospace, "DejaVu Sans Mono", monospace; background: #0b0e14; border: 1px solid #2b3446;
+                 padding: .25em .55em; border-radius: 8px; font-size: .95rem; word-break: break-all; color: #fff; }
+  .copy { background: transparent; color: #fff; border: 2px solid #3a4459; padding: .5em 1em; border-radius: 999px; cursor: pointer; font-weight: 700; }
+  .copy:hover { border-color: var(--accent); }
+  .pending { border: 1px dashed #3a4459; border-radius: 14px; padding: 22px; color: #c9d1de; }
+  .pending b { color: #fff; }
+
+  /* FAQ */
+  details { border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; background: var(--bg); margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 700; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { background: var(--dark); color: #9aa4b2; padding: 36px 0; font-size: .95rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: #cfd6e2; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">🪰 FlyClap</a>
+    <nav class="nav-links">
+      <a href="#devices">Пристрої</a>
+      <a href="#how">Як працює</a>
+      <a href="#open">Відкритий код</a>
+      <a href="#faq">Питання</a>
+      <a class="btn btn-primary" href="#donate">Підтримати</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Відкритий DIY-проєкт · Arduino + ESP32</span>
+        <h1>Мухобійка, що <em>не промахується</em></h1>
+        <p class="lead">FlyClap — хлопавка з ІЧ-завісою, яка ловить муху за ~25 мс, і турель-водомет, що бачить навіть мошку 1–3 мм.
+          Усі прошивки, схеми й 3D-моделі відкриті. Допоможіть зібрати й випробувати перший прототип.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#donate">Підтримати проєкт</a>
+          <a class="btn btn-ghost" href="https://github.com/tepasha/FlyClap" target="_blank" rel="noopener">Код на GitHub →</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="img/flyclap-case.png" alt="3D-модель корпусу FlyClap для друку" width="1200" height="900">
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b>~25 мс</b><span>від променя до схлопування</span></div>
+      <div class="stat"><b>1–3 мм</b><span>мошку видно камерою</span></div>
+      <div class="stat"><b>0</b><span>лазерів і високої напруги</span></div>
+      <div class="stat"><b>MIT</b><span>весь код і моделі відкриті</span></div>
+    </div>
+  </div>
+
+  <section id="devices">
+    <div class="wrap">
+      <h2>Три пристрої — від простого до розумного</h2>
+      <p class="sub">Можна зібрати будь-який окремо. Для кожного є прошивка, схема підключення, список деталей і модель для 3D-друку.</p>
+      <div class="grid3">
+        <article class="card">
+          <div class="pic"><img src="img/flyclap-device.png" alt="Ілюстрація FlyClap у розрізі" loading="lazy"></div>
+          <div class="body">
+            <div><span class="tag">Arduino</span><span class="tag">найпростіший</span></div>
+            <h3>FlyClap — хлопавка</h3>
+            <ul>
+              <li>Муха летить до приманки й перетинає ІЧ-промінь</li>
+              <li>Соленоїд вибиває засувку — пластини схлопуються</li>
+              <li>Серво саме взводить механізм знову</li>
+            </ul>
+            <a class="more" href="https://github.com/tepasha/FlyClap/blob/main/docs/flyclap.md" target="_blank" rel="noopener">Документація →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pic"><img src="img/flysonar-arduino-device.png" alt="Ілюстрація турелі FlySonar з сонаром" loading="lazy"></div>
+          <div class="body">
+            <div><span class="tag">Arduino</span><span class="tag">сонар</span></div>
+            <h3>FlySonar — турель із сонаром</h3>
+            <ul>
+              <li>Ультразвук HC-SR04 сканує зону 10–40 см</li>
+              <li>Уточнює напрям до 0,5° і стріляє лише по мусі, що сіла</li>
+              <li>Не стріляє по руках і тваринах — фільтр великих об'єктів</li>
+            </ul>
+            <a class="more" href="https://github.com/tepasha/FlyClap/blob/main/docs/flysonar.md" target="_blank" rel="noopener">Документація →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pic"><img src="img/flysonar-esp32-device.png" alt="Ілюстрація FlySonar ESP32 з камерою і LED-панеллю" loading="lazy"></div>
+          <div class="body">
+            <div><span class="tag">ESP32-CAM</span><span class="tag">бачить мошку</span></div>
+            <h3>FlySonar ESP32 — турель із зором</h3>
+            <ul>
+              <li>Камера бачить комаху як темну точку на світлій панелі</li>
+              <li>Відстежує політ і цілиться з упередженням</li>
+              <li>Одна плата: зір, серви й клапан водомету</li>
+            </ul>
+            <a class="more" href="https://github.com/tepasha/FlyClap/blob/main/docs/flysonar-esp32.md" target="_blank" rel="noopener">Документація →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="soft how">
+    <div class="wrap grid2">
+      <div>
+        <h3>FlyClap: 25 мс від променя до хлопка</h3>
+        <ol class="steps">
+          <li><b>Приманка</b><span>Сироп або оцет на дні приваблює мух у V-подібну пастку.</span></li>
+          <li><b>Промінь перекрито</b><span>Чотири ІЧ-промені; переривання Arduino реагує за мікросекунди.</span></li>
+          <li><b>Засувка</b><span>Соленоїд вмикається прямо з обробника переривання — ~5 мс.</span></li>
+          <li><b>Хлоп</b><span>Шестерні синхронізують пластини — вони сходяться за 15–20 мс.</span></li>
+          <li><b>Знову напоготові</b><span>Серво розводить пластини, кінцевик підтверджує «взведено».</span></li>
+        </ol>
+        <div class="figure"><img src="img/flyclap-section.png" alt="Розріз механізму FlyClap" loading="lazy"></div>
+      </div>
+      <div>
+        <h3>FlySonar ESP32: камера замість сонара</h3>
+        <ol class="steps">
+          <li><b>Світлий фон</b><span>LED-панель A4 підсвічує зону — комаха на ній контрастна тінь.</span></li>
+          <li><b>Зір на ESP32</b><span>Пляма від 2 пікселів — ціль; рука чи кіт — блок стрільби на 3 с.</span></li>
+          <li><b>Трекер</b><span>Оцінює швидкість і цілиться туди, де комаха буде через 70 мс.</span></li>
+          <li><b>Постріл</b><span>Клапан бака під тиском: струмінь за 5–10 мс, серія з кулдауном.</span></li>
+          <li><b>Безпека</b><span>Тумблер ARM, а без нього — лише журнал цілей, без пострілів.</span></li>
+        </ol>
+        <div class="figure"><img src="img/flysonar-esp32-turret.png" alt="3D-модель турелі та кріплення камери" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="open">
+    <div class="wrap">
+      <h2>Усе відкрито — збирайте самі</h2>
+      <p class="sub">Проєкт живе на GitHub під ліцензією MIT. Логіка прошивок перевірена тестами й симуляцією, 3D-моделі — перевірками на зіткнення деталей на всьому ході механізмів.</p>
+      <div class="repo">
+        <a href="https://github.com/tepasha/FlyClap/tree/main/firmware" target="_blank" rel="noopener"><b>Прошивки</b><span>Arduino Uno / Nano і ESP32-CAM, з поясненнями кожного рішення</span></a>
+        <a href="https://github.com/tepasha/FlyClap/tree/main/cad" target="_blank" rel="noopener"><b>3D-моделі для друку</b><span>STEP для FreeCAD, STL для слайсера, параметричні скрипти</span></a>
+        <a href="https://github.com/tepasha/FlyClap/tree/main/schematics" target="_blank" rel="noopener"><b>Схеми підключення</b><span>Кожен пін, резистор і дріт — SVG і PNG для друку</span></a>
+        <a href="https://github.com/tepasha/FlyClap/blob/main/docs/shopping-list.md" target="_blank" rel="noopener"><b>Список покупок</b><span>Повні комплекти для кожного пристрою</span></a>
+        <a href="https://github.com/tepasha/FlyClap/tree/main/tools" target="_blank" rel="noopener"><b>Тести</b><span>Зір на синтетичних кадрах, симуляція сонара, логіка пострілу</span></a>
+        <a href="https://github.com/tepasha/FlyClap/tree/main/docs" target="_blank" rel="noopener"><b>Документація</b><span>Механіка, налаштування, калібрування, чесні обмеження</span></a>
+      </div>
+      <div class="gallery">
+        <figure><img src="img/flyclap-wiring.png" alt="Схема підключення FlyClap" loading="lazy"><figcaption>Схема підключення FlyClap</figcaption></figure>
+        <figure><img src="img/flysonar-arduino-turret.png" alt="Турель FlySonar з HC-SR04" loading="lazy"><figcaption>Турель для друку: HC-SR04 + сопло</figcaption></figure>
+        <figure><img src="img/led-stand.png" alt="Підставка LED-панелі" loading="lazy"><figcaption>Підставка LED-панелі з жолобом</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <h2>Де ми зараз</h2>
+      <p class="sub">Чесно: проєкт спроєктований і перевірений на комп'ютері, але ще не зібраний у залізі. Саме на це й потрібна ваша підтримка.</p>
+      <div class="status">
+        <div class="box done">
+          <h3>Готово</h3>
+          <ul>
+            <li>Прошивки для Arduino та ESP32 з автотестами</li>
+            <li>Симуляція сонара: похибка прицілу ≤ 0,5°</li>
+            <li>Схеми підключення всіх трьох пристроїв</li>
+            <li>3D-моделі корпусу, турелі й підставки з перевіркою зіткнень</li>
+            <li>Повний список деталей</li>
+          </ul>
+        </div>
+        <div class="box todo">
+          <h3>Попереду</h3>
+          <ul>
+            <li>Купити деталі й надрукувати перші корпуси</li>
+            <li>Зібрати прототипи й налаштувати на реальних мухах</li>
+            <li>Відкалібрувати турель із камерою на мошках</li>
+            <li>Виправити все, що вилізе на залізі, — і викласти</li>
+            <li>Фото, відео й звіт про результати для всіх</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="donate">
+    <div class="wrap">
+      <h2>Підтримати проєкт</h2>
+      <p class="sub">Кошти підуть на деталі й матеріали для перших прототипів. Усе, що вийде, — креслення, виправлення, результати тестів — залишиться відкритим для всіх.</p>
+      <div class="donate-grid">
+        <div class="panel">
+          <h3>На що підуть кошти</h3>
+          <ul class="budget" id="budget"></ul>
+          <div id="progress-wrap" hidden>
+            <div class="progress"><div id="progress-bar"></div></div>
+            <div class="progress-label" id="progress-label"></div>
+          </div>
+        </div>
+        <div>
+          <div class="methods" id="methods"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Питання</h2>
+      <details><summary>Це безпечно для людей і тварин?</summary>
+        <p>Так, це свідомий вибір архітектури: жодних лазерів і високої напруги. Механізм FlyClap закритий сіткою з вічком ~8 мм — пальці не пролазять. Турель має фільтр великих об'єктів (рука, кіт — не стріляє) і тумблер ARM: без нього пристрій лише записує цілі.</p></details>
+      <details><summary>Чому не лазер чи електросітка?</summary>
+        <p>Лазер небезпечний для очей навіть «для експерименту», а електросітка потребує високої напруги — не для DIY-плати на столі. Вода й механіка безпечні й дешеві.</p></details>
+      <details><summary>Можна зібрати самому, без донатів?</summary>
+        <p>Звісно. Усе відкрито: прошивки, схеми, список покупок, моделі для друку. Донати пришвидшують перший прототип і перевірку на залізі — від якої виграють усі, хто збиратиме після.</p></details>
+      <details><summary>Сонар справді бачить мошку?</summary>
+        <p>Ні — і ми пишемо про це прямо: ультразвук 40 кГц погано бачить об'єкти, менші за 8 мм. Тому для мошки є ESP32-версія з камерою над підсвіченою панеллю.</p></details>
+      <details><summary>Як я дізнаюсь, куди пішли гроші?</summary>
+        <p>Результати — фото, відео, виправлення в коді й моделях — публікуються в репозиторії на GitHub, де видно всю історію змін.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>🪰 FlyClap — відкритий проєкт під ліцензією MIT</span>
+    <span><a href="https://github.com/tepasha/FlyClap" target="_blank" rel="noopener">github.com/tepasha/FlyClap</a></span>
+  </div>
+</footer>
+
+<script src="donate.config.js"></script>
+<script>
+(function () {
+  var cfg = window.FLYCLAP_DONATE || {};
+  var esc = function (s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  };
+  var isUrl = function (s) { return /^https:\/\/[^\s"'<>]+$/.test(s || ""); };
+  var money = function (n) { return Number(n).toLocaleString("uk-UA") + " " + (cfg.currency || ""); };
+
+  // бюджет
+  var budget = document.getElementById("budget");
+  (cfg.budget || []).forEach(function (b) {
+    var li = document.createElement("li");
+    li.innerHTML = "<span>" + esc(b.item) + "</span>" +
+      (b.amount != null ? '<span class="amt">' + esc(money(b.amount)) + "</span>" : "");
+    budget.appendChild(li);
+  });
+
+  // прогрес
+  if (cfg.goal && cfg.raised != null) {
+    var pct = Math.max(0, Math.min(100, cfg.raised / cfg.goal * 100));
+    document.getElementById("progress-wrap").hidden = false;
+    document.getElementById("progress-label").textContent =
+      "Зібрано " + money(cfg.raised) + " з " + money(cfg.goal) + " (" + Math.round(pct) + "%)";
+    requestAnimationFrame(function () { document.getElementById("progress-bar").style.width = pct + "%"; });
+  }
+
+  // способи підтримки
+  var methods = [];
+  var link = function (name, hint, url, label) {
+    if (isUrl(url)) methods.push('<div class="method"><div><div class="name">' + esc(name) + '</div><div class="hint">' +
+      esc(hint) + '</div></div><a class="btn btn-primary" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + "</a></div>");
+  };
+  var copy = function (name, hint, value) {
+    if (value) methods.push('<div class="method"><div><div class="name">' + esc(name) + '</div><div class="hint">' + esc(hint) +
+      '</div><div style="margin-top:8px"><code>' + esc(value) + '</code></div></div><button class="copy" data-copy="' +
+      esc(value) + '">Скопіювати</button></div>');
+  };
+  link("Банка Monobank", "Картка будь-якого банку, Apple Pay, Google Pay", cfg.monobankJar, "Поповнити банку");
+  copy("Переказ на картку", cfg.cardBank || "Номер картки", cfg.card);
+  copy("IBAN", cfg.ibanName ? "Отримувач: " + cfg.ibanName : "Переказ з будь-якого банку", cfg.iban);
+  link("Ko-fi", "Разовий або щомісячний донат з-за кордону", cfg.kofi, "Підтримати на Ko-fi");
+  link("Buy Me a Coffee", "Разовий донат з-за кордону", cfg.buyMeACoffee, "Купити каву");
+  link("PayPal", "Переказ через PayPal", cfg.paypal, "Надіслати через PayPal");
+  copy("USDT", "Мережа " + (cfg.usdtNetwork || "") + " — перевіряйте мережу перед переказом", cfg.usdtAddress);
+
+  var box = document.getElementById("methods");
+  if (methods.length) {
+    box.innerHTML = methods.join("");
+  } else {
+    box.innerHTML = '<div class="pending"><b>Збір ще не відкрито.</b><br>Способи підтримки з’являться тут найближчим часом. ' +
+      'А поки — поставте ⭐ проєкту на <a href="https://github.com/tepasha/FlyClap" target="_blank" rel="noopener">GitHub</a> ' +
+      "або зберіть свій пристрій за відкритими кресленнями.</div>";
+  }
+  box.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]");
+    if (!b) return;
+    var v = b.getAttribute("data-copy");
+    var done = function () { b.textContent = "Скопійовано ✓"; setTimeout(function () { b.textContent = "Скопіювати"; }, 1800); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(v).then(done, function () {});
+    else { var t = document.createElement("textarea"); t.value = v; document.body.appendChild(t); t.select();
+           try { document.execCommand("copy"); done(); } catch (err) {} document.body.removeChild(t); }
+  });
+})();
+</script>
+</body>
+</html>

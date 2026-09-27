@@ -9,3 +9,4 @@ build/
 # CAD
 __pycache__/
 *.tmp.svg
+_site/
