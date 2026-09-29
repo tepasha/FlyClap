@@ -27,6 +27,7 @@ fly-defense/
 ├── schematics/                 # схеми підключення та ілюстрації (SVG + PNG)
 ├── cad/flyclap/                # корпус FlyClap для 3D-друку: STEP (FreeCAD), STL, модель CadQuery
 ├── cad/flysonar/               # турель FlySonar (обидві версії) для 3D-друку
+├── rust/                       # ті самі прошивки на Rust (спільне ядро flycore + 3 прошивки)
 ├── tools/                      # хост-тести, генератор схем (diagrams.py)
 ├── platformio.ini
 └── LICENSE
@@ -68,6 +69,9 @@ FlySonar, ESP32-версія: `pio run -e flysonar_esp32 -t upload` (ESP32-CAM) 
 tools/run_tests.sh   # потрібен лише g++
 ```
 ESP32-версія: зір на синтетичних кадрах і логіка турелі. Arduino-версія: режим цілей від камери та симуляція сонара (віртуальна кімната + модель пелюстки HC-SR04).
+
+### Rust
+Усі три прошивки також є на Rust: спільна логіка в no_std-крейті, тести — `cd rust && cargo test`. Збірка й прошивка описані в [rust/README.md](rust/README.md).
 
 ## Безпека
 

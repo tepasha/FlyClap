@@ -1,0 +1,5 @@
+# Для Nano: board = "nano" (старий бутлоадер) або "nano-new"
+[general]
+board = "uno"
+serial-baudrate = 115200
+open-console = true

@@ -1,0 +1,45 @@
+[package]
+name = "flysonar-esp32"
+version = "0.1.0"
+edition = "2021"
+description = "FlySonar, ESP32-версія: турель з водометом, що бачить мошку (ESP32-CAM / ESP32-S3-CAM)"
+license = "MIT"
+publish = false
+
+# Окремий крейт зі своїм тулчейном (esp) і таргетом, не член хост-воркспейсу
+[workspace]
+
+[[bin]]
+name = "flysonar-esp32"
+harness = false
+
+[features]
+default = ["ai-thinker"]
+# Плата (рівно одна)
+ai-thinker = []   # ESP32-CAM (AI-Thinker), таргет xtensa-esp32-espidf
+s3-eye = []       # ESP32-S3-EYE / Freenove ESP32-S3-WROOM CAM, таргет xtensa-esp32s3-espidf
+# Роль "очі": ESP32 лише бачить і шле кути на Arduino (flysonar з feature `camera`)
+eyes = []
+# Помпа R385 замість клапана з баком під тиском
+pump = []
+
+[dependencies]
+flycore = { path = "../flycore", features = ["alloc"] }
+esp-idf-svc = "0.51"
+anyhow = "1"
+
+[build-dependencies]
+embuild = "0.33"
+
+# Драйвер камери — компонент ESP-IDF; біндинги з'являться в esp_idf_svc::sys::camera
+[[package.metadata.esp-idf-sys.extra_components]]
+remote_component = { name = "espressif/esp32-camera", version = "^2.0.15" }
+bindings_header = "components_esp32.h"
+bindings_module = "camera"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"

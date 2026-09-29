@@ -1,0 +1,18 @@
+[package]
+name = "flycore"
+version = "0.1.0"
+edition = "2021"
+description = "Логіка FlyClap / FlySonar без залежностей від заліза (no_std)"
+license = "MIT"
+publish = false
+
+[features]
+default = []
+# Vec для буферів зору (ESP32). Без неї крейт суто no_std + core — для AVR.
+alloc = []
+# Форматування подій через ufmt (AVR: без core::fmt, щоб влізти у 32 КБ flash)
+ufmt = ["dep:ufmt"]
+
+[dependencies]
+libm = "0.2"
+ufmt = { version = "0.2", optional = true }

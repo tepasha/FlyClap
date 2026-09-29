@@ -1,0 +1,9 @@
+# Тік FreeRTOS 1 мс: задача турелі (клапан, серви) крокує щомілісекунди
+CONFIG_FREERTOS_HZ=1000
+# Зір і головний цикл — на ядрі 1, турель — на ядрі 0 (як loop() в Arduino)
+CONFIG_ESP_MAIN_TASK_AFFINITY_CPU1=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=16384
+# Буфери кадрів і зору (~0.6 МБ) — у PSRAM
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_USE_MALLOC=y
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1=n
