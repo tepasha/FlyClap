@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1146" viewBox="0 0 1200 1146">
+<rect x="0" y="0" width="1200" height="1146" rx="0" fill="#ffffff" stroke="none" stroke-width="1.6"/>
+<text x="24" y="38" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="22" text-anchor="start" font-weight="bold" fill="#1b1b1b">Основа і модулі: роз'єми JST-XH (крок 2,5 мм)</text>
+<text x="24" y="64" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#5b6470">Основа: плата, DC-DC 12 → 5 В, тумблер ARM, статус-LED, бузер, силові ключі. Модулі підключаються до неї цими роз'ємами.</text>
+<text x="24" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#5b6470">Різна кількість контактів не дає вставити модуль не туди. Земля — завжди контакт 1 (▲), крім силового виходу P.</text>
+<rect x="24" y="112" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="133" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="146" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">P</text>
+<text x="42" y="174" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">силовий вихід</text>
+<text x="42" y="194" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">XH-2</text>
+<rect x="250" y="130" width="140" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="124" width="124" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,186 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="145" width="16" height="16" rx="0" fill="#d62828" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="141" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="204" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#d62828">+12 В</text>
+<rect x="344.0" y="145" width="16" height="16" rx="0" fill="#1b1b1b" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="141" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="204" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1b1b1b">OUT</text>
+<text x="680" y="150" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Соленоїд, помпа, клапан — просто два дроти.</text>
+<text x="680" y="167" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">MOSFET і діод 1N5819 стоять на основі.</text>
+<text x="680" y="184" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Соленоїд &gt; 2 А — гвинтова клема замість XH-2.</text>
+<rect x="24" y="230" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="251" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="264" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">L</text>
+<text x="42" y="292" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">зв'язок між платами</text>
+<text x="42" y="312" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">XH-3</text>
+<rect x="250" y="248" width="204" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="242" width="188" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,304 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="263" width="16" height="16" rx="0" fill="#222222" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="259" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="322" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<rect x="344.0" y="263" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="259" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="322" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">TX</text>
+<rect x="408.0" y="263" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="416.0" y="259" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">3</text>
+<text x="416.0" y="322" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">RX</text>
+<text x="680" y="268" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">UART 115200: «очі» (ESP32) → турель (Arduino).</text>
+<text x="680" y="285" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Кабель перехресний: TX ↔ RX.</text>
+<text x="680" y="302" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Живлення не передає — спільна лише земля.</text>
+<rect x="24" y="348" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="369" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="382" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">E</text>
+<text x="42" y="410" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">випромінювачі завіси</text>
+<text x="42" y="430" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">XH-3</text>
+<rect x="250" y="366" width="204" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="360" width="188" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,422 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="381" width="16" height="16" rx="0" fill="#222222" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="377" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="440" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<rect x="344.0" y="381" width="16" height="16" rx="0" fill="#f08c00" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="377" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="440" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f08c00">+5 В</text>
+<rect x="408.0" y="381" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="416.0" y="377" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">3</text>
+<text x="416.0" y="440" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">CARRIER</text>
+<text x="680" y="386" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">ІЧ-світлодіоди завіси.</text>
+<text x="680" y="403" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">CARRIER — несуча 38 кГц (D3), лише для TSSP4038;</text>
+<text x="680" y="420" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">у варіанті з LM339 не використовується.</text>
+<rect x="24" y="466" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="487" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="500" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S</text>
+<text x="42" y="528" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">сенсор / кнопка</text>
+<text x="42" y="548" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">XH-4</text>
+<rect x="250" y="484" width="268" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="478" width="252" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,540 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="499" width="16" height="16" rx="0" fill="#222222" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="495" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="558" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<rect x="344.0" y="499" width="16" height="16" rx="0" fill="#f08c00" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="495" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="558" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f08c00">+5 В</text>
+<rect x="408.0" y="499" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="416.0" y="495" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">3</text>
+<text x="416.0" y="558" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">SIG1</text>
+<rect x="472.0" y="499" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="480.0" y="495" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">4</text>
+<text x="480.0" y="558" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">SIG2</text>
+<text x="680" y="504" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">HC-SR04: SIG1 = TRIG, SIG2 = ECHO.</text>
+<text x="680" y="521" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Кінцевик, кнопка RECAL: SIG1 на GND.</text>
+<text x="680" y="538" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">На ESP32 ECHO (5 В) — через дільник 1 кОм / 2 кОм.</text>
+<rect x="24" y="584" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="605" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="618" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B</text>
+<text x="42" y="646" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">приймачі завіси</text>
+<text x="42" y="666" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">XH-6</text>
+<rect x="250" y="602" width="396" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="596" width="380" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,658 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="617" width="16" height="16" rx="0" fill="#222222" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<rect x="344.0" y="617" width="16" height="16" rx="0" fill="#f08c00" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f08c00">+5 В</text>
+<rect x="408.0" y="617" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="416.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">3</text>
+<text x="416.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">B1</text>
+<rect x="472.0" y="617" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="480.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">4</text>
+<text x="480.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">B2</text>
+<rect x="536.0" y="617" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="544.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">5</text>
+<text x="544.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">B3</text>
+<rect x="600.0" y="617" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="608.0" y="613" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">6</text>
+<text x="608.0" y="676" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">B4</text>
+<text x="680" y="622" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Виходи LM339 або TSSP4038, чотири промені.</text>
+<text x="680" y="639" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Промінь цілий = LOW, перекритий = HIGH.</text>
+<rect x="24" y="702" width="1152" height="108" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="42" y="723" width="45" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="64.5" y="736" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">servo</text>
+<text x="42" y="764" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1b1b1b">серво</text>
+<text x="42" y="784" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">3-pin 2,54 мм</text>
+<rect x="250" y="720" width="204" height="46" rx="5" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.8"/>
+<rect x="258" y="714" width="188" height="6" rx="0" fill="#fbfaf5" stroke="#8c8672" stroke-width="1.4"/>
+<path d="M282.0,776 l12,0 l-6,-8 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="280.0" y="735" width="16" height="16" rx="0" fill="#222222" stroke="#555" stroke-width="1"/>
+<text x="288.0" y="731" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">1</text>
+<text x="288.0" y="794" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#222222">GND</text>
+<rect x="344.0" y="735" width="16" height="16" rx="0" fill="#8e44ad" stroke="#555" stroke-width="1"/>
+<text x="352.0" y="731" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">2</text>
+<text x="352.0" y="794" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#8e44ad">+5 В</text>
+<rect x="408.0" y="735" width="16" height="16" rx="0" fill="#1f6fd1" stroke="#555" stroke-width="1"/>
+<text x="416.0" y="731" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" font-weight="normal" fill="#5b6470">3</text>
+<text x="416.0" y="794" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1f6fd1">сигнал</text>
+<text x="680" y="740" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">Стандартний роз'єм серви (коричневий, червоний,</text>
+<text x="680" y="757" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">помаранчевий). Живлення — від DC-DC 5–6 В ≥3 А,</text>
+<text x="680" y="774" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">не від плати; поруч електроліт 470–1000 мкФ.</text>
+<rect x="24" y="824" width="1152" height="314" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<text x="38" y="848" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Роз'єми типових збірок: що до якого піна</text>
+<text x="42" y="882" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1b1b1b">Роз'єм основи</text>
+<text x="190" y="882" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlyClap</text>
+<text x="440" y="882" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar</text>
+<text x="690" y="882" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar Turret</text>
+<text x="920" y="882" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1b1b1b">FlySonar ESP32 (AI-Thinker)</text>
+<line x1="42" y1="892" x2="1158" y2="892" stroke="#b8c2cf" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="42" y="903" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="916" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B</text>
+<text x="190" y="916" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D4–D7 ← промені</text>
+<text x="440" y="916" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="690" y="916" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="920" y="916" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<rect x="42" y="928" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="941" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">E</text>
+<text x="190" y="941" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">+5 В · D3 (TSSP)</text>
+<text x="440" y="941" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="690" y="941" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="920" y="941" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<rect x="42" y="953" width="24" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="54.0" y="966" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S1</text>
+<text x="190" y="966" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D8 ← кінцевик</text>
+<text x="440" y="966" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D2 → TRIG · D3 ← ECHO</text>
+<text x="690" y="966" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="920" y="966" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<rect x="42" y="978" width="24" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="54.0" y="991" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S2</text>
+<text x="190" y="991" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="440" y="991" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D4 ← кнопка RECAL</text>
+<text x="690" y="991" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="920" y="991" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<rect x="42" y="1003" width="45" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="64.5" y="1016" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">servo</text>
+<text x="190" y="1016" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D10 → взведення</text>
+<text x="440" y="1016" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D9 → PAN · D10 → TILT</text>
+<text x="690" y="1016" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D9 → PAN · D10 → TILT</text>
+<text x="920" y="1016" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">IO14 → PAN · IO15 → TILT</text>
+<rect x="42" y="1028" width="24" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="54.0" y="1041" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">P1</text>
+<text x="190" y="1041" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D9 → соленоїд</text>
+<text x="440" y="1041" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D5 → помпа / клапан</text>
+<text x="690" y="1041" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D5 → помпа / клапан</text>
+<text x="920" y="1041" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">IO13 → клапан</text>
+<rect x="42" y="1053" width="17" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="50.5" y="1066" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">L</text>
+<text x="190" y="1066" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="440" y="1066" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470"></text>
+<text x="690" y="1066" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">D0 (RX) ← «очі»</text>
+<text x="920" y="1066" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">IO14 (TX) → Arduino*</text>
+<text x="42" y="1091" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">на основі</text>
+<text x="190" y="1091" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">ARM A0 · LED D13 · бузер D11</text>
+<text x="440" y="1091" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">ARM A0 · LED D13</text>
+<text x="690" y="1091" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">ARM A0 · LED D13</text>
+<text x="920" y="1091" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">ARM IO12 · LED IO33</text>
+<text x="42" y="1122" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">* у ролі «очі» (прошивка flysonar_eyes): серви й клапан тоді підключаються до Arduino.</text>
+</svg>

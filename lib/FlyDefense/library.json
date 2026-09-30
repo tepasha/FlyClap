@@ -1,0 +1,16 @@
+{
+  "name": "FlyDefense",
+  "version": "2.0.0",
+  "description": "Модульні DIY-пристрої проти мух: основа (ARM, LED, безпека) + модулі — ІЧ-завіса, хлопавка, турель, сонар, камера ESP32, зв'язок між платами",
+  "keywords": ["fly", "insect", "turret", "sonar", "esp32-cam"],
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": ["atmelavr", "espressif32"],
+  "dependencies": [
+    { "owner": "arduino-libraries", "name": "Servo", "platforms": ["atmelavr"] }
+  ],
+  "build": {
+    "srcDir": "src",
+    "libArchive": true
+  }
+}

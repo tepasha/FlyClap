@@ -11,7 +11,11 @@
 | **FlySonar — Arduino** | [SVG](flysonar-arduino-device.svg) · [PNG](png/flysonar-arduino-device.png) | [SVG](flysonar-arduino-wiring.svg) · [PNG](png/flysonar-arduino-wiring.png) |
 | **FlySonar — ESP32** | [SVG](flysonar-esp32-device.svg) · [PNG](png/flysonar-esp32-device.png) | [SVG](flysonar-esp32-wiring.svg) · [PNG](png/flysonar-esp32-wiring.png) |
 
+| **Основа і модулі** | — | роз'єми JST-XH, розпіновка, що до якого піна: [SVG](modules-connectors.svg) · [PNG](png/modules-connectors.png) |
+
 Кольори дротів на всіх схемах однакові: 🔴 +12 В · 🟠 +5 В · 🟣 живлення серв · 🔵 сигнали · ⚫ земля.
+
+Зелені мітки біля сигналів — роз'єм основи й контакт: `B·3` означає роз'єм B, контакт 3. Типи роз'ємів описані в [docs/modules.md](../docs/modules.md#залізо-розєми-jst-xh).
 
 Ілюстрації умовні (пропорції не в масштабі), це не креслення для кріплень. Подробиці — у документації: [FlyClap](../docs/flyclap.md), [FlySonar — Arduino](../docs/flysonar.md), [FlySonar — ESP32](../docs/flysonar-esp32.md).
 
@@ -33,3 +37,4 @@ python3 tools/diagrams.py --png    # SVG + PNG (потрібен Chromium; шл�
 ![FlySonar Arduino — схема](flysonar-arduino-wiring.svg)
 ![FlySonar ESP32 — як виглядає](flysonar-esp32-device.svg)
 ![FlySonar ESP32 — схема](flysonar-esp32-wiring.svg)
+![Основа і модулі — роз'єми JST-XH](modules-connectors.svg)

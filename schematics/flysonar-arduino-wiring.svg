@@ -71,26 +71,40 @@
 <line x1="324" y1="404" x2="348" y2="404" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="328" y1="408" x2="344" y2="408" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="332" y1="412" x2="340" y2="412" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
-<polyline points="500,198 516,198" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5,4"/>
-<text x="520" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">← ESP32 GPIO14 (опц.)</text>
-<polyline points="500,234 516,234" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="239" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ TRIG</text>
-<polyline points="500,270 516,270" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="275" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ECHO</text>
-<polyline points="500,306 516,306" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← кнопка RECAL</text>
-<polyline points="500,342 516,342" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="347" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ затвор MOSFET</text>
-<polyline points="500,378 516,378" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="383" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво PAN</text>
-<polyline points="500,414 516,414" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="419" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво TILT</text>
-<polyline points="500,450 516,450" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="455" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">вбудований LED</text>
-<polyline points="500,486 516,486" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="491" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← тумблер ARM</text>
+<polyline points="500,198 512,198" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5,4"/>
+<rect x="514" y="189" width="31" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="529.5" y="202" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">L·3</text>
+<text x="549" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">← ESP32 IO14 (опц.)</text>
+<polyline points="500,234 512,234" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="225" width="38" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="533.0" y="238" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S1·3</text>
+<text x="556" y="239" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ TRIG</text>
+<polyline points="500,270 512,270" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="261" width="38" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="533.0" y="274" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S1·4</text>
+<text x="556" y="275" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ECHO</text>
+<polyline points="500,306 512,306" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="297" width="38" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="533.0" y="310" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S2·3</text>
+<text x="556" y="311" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← кнопка RECAL</text>
+<polyline points="500,342 512,342" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="333" width="24" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="526.0" y="346" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">P1</text>
+<text x="542" y="347" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ затвор MOSFET</text>
+<polyline points="500,378 512,378" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="369" width="45" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="536.5" y="382" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">servo</text>
+<text x="563" y="383" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво PAN</text>
+<polyline points="500,414 512,414" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="405" width="45" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="536.5" y="418" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">servo</text>
+<text x="563" y="419" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ серво TILT</text>
+<polyline points="500,450 512,450" fill="none" stroke="#5b6470" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="516" y="455" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">вбудований LED</text>
+<polyline points="500,486 512,486" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="516" y="491" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← тумблер ARM</text>
 <rect x="700" y="60" width="480" height="230" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Сонар HC-SR04</text>
+<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Сонар HC-SR04 — роз'єм S1 (XH-4)</text>
 <rect x="760" y="110" width="200" height="90" rx="6" fill="#1b5e9e" stroke="#0e3a63" stroke-width="1.6"/>
 <circle cx="805" cy="150" r="30" fill="#c9ced6" stroke="#6b7480" stroke-width="2"/>
 <circle cx="805" cy="150" r="20" fill="#9aa3ae" stroke="#6b7480" stroke-width="1.8"/>
@@ -127,7 +141,7 @@
 <line x1="1122" y1="186" x2="1138" y2="186" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="1126" y1="190" x2="1134" y2="190" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <rect x="700" y="305" width="480" height="230" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="329" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Помпа R385 (або клапан 12 В — так само)</text>
+<text x="714" y="329" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Помпа R385 (або клапан 12 В) — роз'єм P1 (XH-2)</text>
 <text x="716" y="475" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D5</text>
 <polyline points="740,470 752,470" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="752" y1="470" x2="764.0" y2="470" stroke="#1f6fd1" stroke-width="2.2" stroke-linecap="round"/>
@@ -182,7 +196,7 @@
 <text x="1086" y="407.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">1N5819</text>
 <polyline points="1070,428 1000,428" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <rect x="700" y="550" width="480" height="330" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="574" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серви, кнопка RECAL, ARM</text>
+<text x="714" y="574" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серви (3-pin), кнопка RECAL (S2), ARM (на основі)</text>
 <rect x="900" y="590" width="110" height="56" rx="6" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
 <circle cx="984" cy="618" r="12" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
 <text x="908" y="612" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#ffffff">PAN</text>

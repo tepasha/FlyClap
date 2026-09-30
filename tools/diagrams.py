@@ -27,6 +27,7 @@ CGND = "#222222"   # земля
 CWATER = "#2a9df4"
 INK = "#1b1b1b"
 MUTED = "#5b6470"
+CCONN = "#0b7a75"  # мітки роз'ємів JST-XH (docs/modules.md)
 FONT = "DejaVu Sans, Arial, Helvetica, sans-serif"
 
 
@@ -228,6 +229,13 @@ class Svg:
                 pins.setdefault(n, (px, py))       # однакові назви (GND) — перша, ліва
         return pins, h
 
+    def tag(self, x, y, label):
+        """Мітка роз'єму основи, напр. "B·3" — роз'єм B, контакт 3. Повертає ширину."""
+        w = 10 + 7 * len(label)
+        self.rect(x, y - 9, w, 18, fill="#e6f4f3", stroke=CCONN, sw=1.2, rx=4)
+        self.text(x + w / 2, y + 4, label, size=11, anchor="middle", weight="bold", color=CCONN)
+        return w
+
     def net(self, x, y, label, color=CSIG, anchor="start", size=13, weight="bold"):
         self.text(x, y + 5, label, size=size, anchor=anchor, weight=weight, color=color)
 
@@ -300,7 +308,7 @@ def flyclap_wiring():
     s.gnd(336, yg + 26)
 
     notes = {
-        "D4": "← ІЧ к.1 (LM339 п.2)",
+        "D4": "← ІЧ к.1 (п.2)",
         "D5": "← ІЧ к.2 (п.1)",
         "D6": "← ІЧ к.3 (п.14)",
         "D7": "← ІЧ к.4 (п.13)",
@@ -311,13 +319,17 @@ def flyclap_wiring():
         "D13": "вбудований LED",
         "A0": "← тумблер ARM",
     }
+    tags = {"D4": "B·3", "D5": "B·4", "D6": "B·5", "D7": "B·6", "D8": "S1·3", "D9": "P1", "D10": "servo"}
     for p, n in notes.items():
         px, py = pins[p]
-        s.wire([(px, py), (px + 16, py)], CSIG)
-        s.text(px + 20, py + 5, n, size=12, color=CSIG if p != "D13" else MUTED)
+        s.wire([(px, py), (px + 12, py)], CSIG)
+        tx = px + 16
+        if p in tags:
+            tx += s.tag(px + 14, py, tags[p]) + 2
+        s.text(tx, py + 5, n, size=12, color=CSIG if p != "D13" else MUTED)
 
     # ---- ІЧ-канал ----
-    s.box(700, 60, 480, 330, "ІЧ-канал ×4 (показано канал 1)")
+    s.box(700, 60, 480, 330, "ІЧ-канал ×4 (показано канал 1) — роз'єми B і E")
     # ІЧ-світлодіод
     s.vcc(740, 110, "+5V", C5)
     s.res_v(740, 120, 170, "150 Ом", side="left")
@@ -368,7 +380,7 @@ def flyclap_wiring():
     s.text(1164, 330, "Промінь цілий → LOW,\nперекритий → HIGH", size=11, anchor="end", color=MUTED)
 
     # ---- соленоїд ----
-    s.box(700, 405, 480, 215, "Соленоїд-засувка")
+    s.box(700, 405, 480, 215, "Соленоїд — роз'єм P1")
     s.net(716, 530, "D9", CSIG)
     s.wire([(740, 530), (752, 530)], CSIG)
     s.res_h(752, 812, 530, "100 Ом", CSIG)
@@ -392,7 +404,7 @@ def flyclap_wiring():
     s.gnd(1130, 572)
 
     # ---- інше ----
-    s.box(700, 635, 480, 250, "Серво, кінцевик, бузер, ARM")
+    s.box(700, 635, 480, 250, "Серво (3-pin), кінцевик (S1), бузер і ARM (на основі)")
     sig, vp, gg = s.servo(870, 670, "MG996R")
     s.net(716, 684, "D10", CSIG)
     s.wire([(752, 684), sig], CSIG)
@@ -425,7 +437,8 @@ def flyclap_wiring():
              notes=("Силові землі (соленоїд, серво) — зіркою до мінуса БЖ, не через Nano.",
                     "LM339: пін 3 → +5V, пін 12 → ⏚, 100 нФ між ними.",
                     "Канали (IN+, IN−, OUT): 1 — 5, 4, 2 · 2 — 7, 6, 1 · 3 — 9, 8, 14 · 4 — 11, 10, 13.",
-                    "Трубки з термоусадки на фототранзистори — від стороннього світла."),
+                    "Трубки з термоусадки на фототранзистори — від стороннього світла.",
+                    "Зелені мітки — роз'єм основи JST-XH і контакт (B·3 = роз'єм B, контакт 3): modules-connectors.svg."),
              width=660)
     s.save("flyclap-wiring.svg")
 
@@ -465,11 +478,15 @@ def flyclap_tssp():
 
     pins, h = s.chip(40, 100, 140, "Arduino Nano", ["5V", None, "GND"],
                      ["D3", "D4", "D5", "D6", "D7", "D11"], pitch=40)
-    for p, lab in (("D3", "→ несуча 38 кГц"), ("D4", "← приймач 1"), ("D5", "← приймач 2"),
+    tags = {"D3": "E·3", "D4": "B·3", "D5": "B·4", "D6": "B·5", "D7": "B·6"}
+    for p, lab in (("D3", "→ 38 кГц"), ("D4", "← приймач 1"), ("D5", "← приймач 2"),
                    ("D6", "← приймач 3"), ("D7", "← приймач 4"), ("D11", "→ бузер")):
         px, py = pins[p]
-        s.wire([(px, py), (px + 16, py)], CSIG)
-        s.text(px + 20, py + 5, lab, size=12, color=CSIG)
+        s.wire([(px, py), (px + 12, py)], CSIG)
+        tx = px + 16
+        if p in tags:
+            tx += s.tag(px + 14, py, tags[p]) + 2
+        s.text(tx, py + 5, lab, size=12, color=CSIG)
     x5, y5 = pins["5V"]
     s.wire([(x5, y5), (24, y5)], C5)
     s.net(24, y5 - 16, "+5V", C5, anchor="start", size=12)
@@ -478,7 +495,7 @@ def flyclap_tssp():
     s.gnd(28, yg + 26)
 
     # --- передавач: 4 ІЧ-світлодіоди через BC337 ---
-    s.box(330, 90, 400, 360, "Передавач: 4 ІЧ-LED, несуча з D3")
+    s.box(330, 90, 400, 360, "Передавач: 4 ІЧ-LED — роз'єм E (XH-3)")
     for i in range(4):
         x = 370 + i * 70
         s.vcc(x, 140, "+5V", C5)
@@ -500,7 +517,7 @@ def flyclap_tssp():
            size=11, color=MUTED)
 
     # --- приймачі ---
-    s.box(750, 90, 430, 360, "Приймачі TSSP4038 ×4 (показано 1)")
+    s.box(750, 90, 430, 360, "Приймачі TSSP4038 ×4 — роз'єм B (XH-6)")
     s.rect(900, 150, 90, 110, fill="#2b2b2b", stroke="#111", rx=8)
     s.circle(945, 185, 22, fill="#4a4a4a", stroke="#111")
     s.text(945, 245, "TSSP4038", size=11, anchor="middle", color="#fff")
@@ -551,17 +568,21 @@ def flysonar_arduino_wiring():
     xg, yg = pins["GND"]
     s.wire([(xg, yg), (336, yg), (336, yg + 16)], CGND)
     s.gnd(336, yg + 26)
-    notes = {"D0": ("← ESP32 GPIO14 (опц.)", MUTED), "D2": ("→ TRIG", CSIG), "D3": ("← ECHO", CSIG),
+    notes = {"D0": ("← ESP32 IO14 (опц.)", MUTED), "D2": ("→ TRIG", CSIG), "D3": ("← ECHO", CSIG),
              "D4": ("← кнопка RECAL", CSIG), "D5": ("→ затвор MOSFET", CSIG),
              "D9": ("→ серво PAN", CSIG), "D10": ("→ серво TILT", CSIG),
              "D13": ("вбудований LED", MUTED), "A0": ("← тумблер ARM", CSIG)}
+    tags = {"D0": "L·3", "D2": "S1·3", "D3": "S1·4", "D4": "S2·3", "D5": "P1", "D9": "servo", "D10": "servo"}
     for p, (n, col) in notes.items():
         px, py = pins[p]
-        s.wire([(px, py), (px + 16, py)], col, dash="5,4" if p == "D0" else None)
-        s.text(px + 20, py + 5, n, size=12, color=col)
+        s.wire([(px, py), (px + 12, py)], col, dash="5,4" if p == "D0" else None)
+        tx = px + 16
+        if p in tags:
+            tx += s.tag(px + 14, py, tags[p]) + 2
+        s.text(tx, py + 5, n, size=12, color=col)
 
     # --- HC-SR04 ---
-    s.box(700, 60, 480, 230, "Сонар HC-SR04")
+    s.box(700, 60, 480, 230, "Сонар HC-SR04 — роз'єм S1 (XH-4)")
     s.rect(760, 110, 200, 90, fill="#1b5e9e", stroke="#0e3a63", rx=6)
     for cx in (805, 915):
         s.circle(cx, 150, 30, fill="#c9ced6", stroke="#6b7480", sw=2)
@@ -585,7 +606,7 @@ def flysonar_arduino_wiring():
     s.gnd(1130, 182)
 
     # --- помпа ---
-    s.box(700, 305, 480, 230, "Помпа R385 (або клапан 12 В — так само)")
+    s.box(700, 305, 480, 230, "Помпа R385 (або клапан 12 В) — роз'єм P1 (XH-2)")
     s.net(716, 470, "D5", CSIG)
     s.wire([(740, 470), (752, 470)], CSIG)
     s.res_h(752, 812, 470, "100 Ом", CSIG)
@@ -609,7 +630,7 @@ def flysonar_arduino_wiring():
     s.wire([(1070, 428), (1000, 428)], INK, 2.2)
 
     # --- серви, кнопки ---
-    s.box(700, 550, 480, 330, "Серви, кнопка RECAL, ARM")
+    s.box(700, 550, 480, 330, "Серви (3-pin), кнопка RECAL (S2), ARM (на основі)")
     for i, (pin, name) in enumerate((("D9", "PAN"), ("D10", "TILT"))):
         y = 590 + i * 90
         sig, vp, gg = s.servo(900, y, name, sub="MG90S")
@@ -677,7 +698,7 @@ def flysonar_esp32_wiring():
     s.text(pins["3V3"][0] + 20, pins["3V3"][1] + 5, "не підключати", size=11, color=MUTED)
 
     # --- клапан ---
-    s.box(700, 60, 480, 250, "Клапан 12 В (нормально закритий, прямої дії)")
+    s.box(700, 60, 480, 250, "Клапан 12 В (NC, прямої дії) — роз'єм P1 (XH-2)")
     s.net(716, 225, "IO13", CSIG)
     s.wire([(756, 225), (762, 225)], CSIG)
     s.res_h(762, 822, 225, "100 Ом", CSIG)
@@ -699,7 +720,7 @@ def flysonar_esp32_wiring():
     s.wire([(1070, 182), (1010, 182)], INK, 2.2)
 
     # --- серви ---
-    s.box(700, 325, 480, 220, "Серви (живлення — від DC-DC 5 В)")
+    s.box(700, 325, 480, 220, "Серви (живлення від DC-DC 5 В) — servo 3-pin")
     for i, (pin, name) in enumerate((("IO14", "PAN"), ("IO15", "TILT"))):
         y = 365 + i * 85
         sig, vp, gg = s.servo(930, y, name)
@@ -720,7 +741,7 @@ def flysonar_esp32_wiring():
     s.gnd(850, 616)
     s.text(880, 604, "лише на GND, БЕЗ зовнішньої", size=12)
     s.text(880, 622, "підтяжки (strapping-пін)", size=12)
-    s.text(716, 660, "Статус-LED — вбудований GPIO33: блимає = ARM, горить = SAFE.", size=12, color=MUTED)
+    s.text(716, 660, "Статус-LED (GPIO33): горить = ARM, коротко мигає = SAFE.", size=12, color=MUTED)
 
     # --- панель + Freenove ---
     s.box(700, 695, 480, 225, "Інше")
@@ -1054,6 +1075,89 @@ def flysonar_esp32_device():
     s.save("flysonar-esp32-device.svg")
 
 
+# =====================================================================
+#                  Основа і модулі: роз'єми JST-XH
+# =====================================================================
+def connector(s, x, y, pins, pitch=64):
+    """Роз'єм, вигляд з боку штекера: контакти з номерами й призначенням.
+    pins: [(назва, колір)]. Контакт 1 — ліворуч, позначений трикутником."""
+    n = len(pins)
+    w = pitch * n + 12
+    s.rect(x, y, w, 46, fill="#fbfaf5", stroke="#8c8672", sw=1.8, rx=5)
+    s.rect(x + 8, y - 6, w - 16, 6, fill="#fbfaf5", stroke="#8c8672", sw=1.4)   # ключ колодки
+    s.path(f"M{x + 6 + pitch / 2 - 6},{y + 56} l12,0 l-6,-8 Z", fill=INK, sw=1)  # контакт 1
+    for i, (name, color) in enumerate(pins):
+        cx = x + 6 + pitch / 2 + i * pitch
+        s.rect(cx - 8, y + 15, 16, 16, fill=color, stroke="#555", sw=1)
+        s.text(cx, y + 11, str(i + 1), size=10, anchor="middle", color=MUTED)
+        s.text(cx, y + 74, name, size=12, anchor="middle", weight="bold", color=color if color != INK else INK)
+    return w
+
+
+def modules_connectors():
+    s = Svg(1200, 1146, "Основа і модулі: роз'єми JST-XH (крок 2,5 мм)")
+    s.text(24, 64, "Основа: плата, DC-DC 12 → 5 В, тумблер ARM, статус-LED, бузер, силові ключі. Модулі підключаються до неї "
+                   "цими роз'ємами.", size=13, color=MUTED)
+    s.text(24, 84, "Різна кількість контактів не дає вставити модуль не туди. Земля — завжди контакт 1 (▲), крім "
+                   "силового виходу P.", size=13, color=MUTED)
+
+    rows = [
+        ("P", "силовий вихід", "XH-2", [("+12 В", C12), ("OUT", INK)],
+         "Соленоїд, помпа, клапан — просто два дроти.\nMOSFET і діод 1N5819 стоять на основі.\nСоленоїд > 2 А — гвинтова клема замість XH-2."),
+        ("L", "зв'язок між платами", "XH-3", [("GND", CGND), ("TX", CSIG), ("RX", CSIG)],
+         "UART 115200: «очі» (ESP32) → турель (Arduino).\nКабель перехресний: TX ↔ RX.\nЖивлення не передає — спільна лише земля."),
+        ("E", "випромінювачі завіси", "XH-3", [("GND", CGND), ("+5 В", C5), ("CARRIER", CSIG)],
+         "ІЧ-світлодіоди завіси.\nCARRIER — несуча 38 кГц (D3), лише для TSSP4038;\nу варіанті з LM339 не використовується."),
+        ("S", "сенсор / кнопка", "XH-4", [("GND", CGND), ("+5 В", C5), ("SIG1", CSIG), ("SIG2", CSIG)],
+         "HC-SR04: SIG1 = TRIG, SIG2 = ECHO.\nКінцевик, кнопка RECAL: SIG1 на GND.\nНа ESP32 ECHO (5 В) — через дільник 1 кОм / 2 кОм."),
+        ("B", "приймачі завіси", "XH-6",
+         [("GND", CGND), ("+5 В", C5), ("B1", CSIG), ("B2", CSIG), ("B3", CSIG), ("B4", CSIG)],
+         "Виходи LM339 або TSSP4038, чотири промені.\nПромінь цілий = LOW, перекритий = HIGH."),
+        ("servo", "серво", "3-pin 2,54 мм", [("GND", CGND), ("+5 В", CSV), ("сигнал", CSIG)],
+         "Стандартний роз'єм серви (коричневий, червоний,\nпомаранчевий). Живлення — від DC-DC 5–6 В ≥3 А,\nне від плати; поруч електроліт 470–1000 мкФ."),
+    ]
+    y = 112
+    for code, name, kind, pins, desc in rows:
+        s.box(24, y, 1152, 108)
+        s.tag(42, y + 30, code)
+        s.text(42, y + 62, name, size=14, weight="bold")
+        s.text(42, y + 82, kind, size=12, color=MUTED)
+        connector(s, 250, y + 18, pins)
+        s.text(680, y + 38, desc, size=13)
+        y += 118
+
+    # ---- роз'єми типових збірок ----
+    s.box(24, y + 4, 1152, 314, "Роз'єми типових збірок: що до якого піна")
+    cols = [(42, "Роз'єм основи"), (190, "FlyClap"), (440, "FlySonar"), (690, "FlySonar Turret"),
+            (920, "FlySonar ESP32 (AI-Thinker)")]
+    ty = y + 62
+    for cx, title in cols:
+        s.text(cx, ty, title, size=13, weight="bold")
+    s.line(42, ty + 10, 1158, ty + 10, "#b8c2cf", 1.4)
+    table = [
+        ("B", "D4–D7 ← промені", "", "", ""),
+        ("E", "+5 В · D3 (TSSP)", "", "", ""),
+        ("S1", "D8 ← кінцевик", "D2 → TRIG · D3 ← ECHO", "", ""),
+        ("S2", "", "D4 ← кнопка RECAL", "", ""),
+        ("servo", "D10 → взведення", "D9 → PAN · D10 → TILT", "D9 → PAN · D10 → TILT", "IO14 → PAN · IO15 → TILT"),
+        ("P1", "D9 → соленоїд", "D5 → помпа / клапан", "D5 → помпа / клапан", "IO13 → клапан"),
+        ("L", "", "", "D0 (RX) ← «очі»", "IO14 (TX) → Arduino*"),
+        ("на основі", "ARM A0 · LED D13 · бузер D11", "ARM A0 · LED D13", "ARM A0 · LED D13", "ARM IO12 · LED IO33"),
+    ]
+    ry = ty + 34
+    for row in table:
+        if row[0] != "на основі":
+            s.tag(42, ry - 4, row[0])
+        else:
+            s.text(42, ry, row[0], size=12, color=MUTED)
+        for (cx, _), cell in zip(cols[1:], row[1:]):
+            s.text(cx, ry, cell, size=12, color=CSIG if cell else MUTED)
+        ry += 25
+    s.text(42, ry + 6, "* у ролі «очі» (прошивка flysonar_eyes): серви й клапан тоді підключаються до Arduino.",
+           size=12, color=MUTED)
+    s.save("modules-connectors.svg")
+
+
 def export_png():
     chrome = os.environ.get("CHROME") or next(
         (p for p in ("chrome-headless-shell", "headless_shell", "chromium", "chromium-browser", "google-chrome")
@@ -1080,5 +1184,6 @@ if __name__ == "__main__":
     flyclap_device()
     flysonar_arduino_device()
     flysonar_esp32_device()
+    modules_connectors()
     if "--png" in sys.argv:
         export_png()

@@ -77,28 +77,42 @@
 <line x1="324" y1="389" x2="348" y2="389" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="328" y1="393" x2="344" y2="393" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="332" y1="397" x2="340" y2="397" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
-<polyline points="500,198 516,198" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.1 (LM339 п.2)</text>
-<polyline points="500,231 516,231" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="236" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.2 (п.1)</text>
-<polyline points="500,264 516,264" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="269" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.3 (п.14)</text>
-<polyline points="500,297 516,297" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="302" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.4 (п.13)</text>
-<polyline points="500,330 516,330" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="335" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← кінцевик</text>
-<polyline points="500,363 516,363" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="368" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ затвор MOSFET</text>
-<polyline points="500,396 516,396" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="401" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ сигнал серви</text>
-<polyline points="500,429 516,429" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="434" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ бузер</text>
-<polyline points="500,462 516,462" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="467" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">вбудований LED</text>
-<polyline points="500,495 516,495" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="520" y="500" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← тумблер ARM</text>
+<polyline points="500,198 512,198" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="189" width="31" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="529.5" y="202" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B·3</text>
+<text x="549" y="203" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.1 (п.2)</text>
+<polyline points="500,231 512,231" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="222" width="31" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="529.5" y="235" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B·4</text>
+<text x="549" y="236" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.2 (п.1)</text>
+<polyline points="500,264 512,264" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="255" width="31" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="529.5" y="268" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B·5</text>
+<text x="549" y="269" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.3 (п.14)</text>
+<polyline points="500,297 512,297" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="288" width="31" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="529.5" y="301" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">B·6</text>
+<text x="549" y="302" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← ІЧ к.4 (п.13)</text>
+<polyline points="500,330 512,330" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="321" width="38" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="533.0" y="334" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">S1·3</text>
+<text x="556" y="335" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← кінцевик</text>
+<polyline points="500,363 512,363" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="354" width="24" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="526.0" y="367" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">P1</text>
+<text x="542" y="368" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ затвор MOSFET</text>
+<polyline points="500,396 512,396" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="514" y="387" width="45" height="18" rx="4" fill="#e6f4f3" stroke="#0b7a75" stroke-width="1.2"/>
+<text x="536.5" y="400" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#0b7a75">servo</text>
+<text x="563" y="401" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ сигнал серви</text>
+<polyline points="500,429 512,429" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="516" y="434" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">→ бузер</text>
+<polyline points="500,462 512,462" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="516" y="467" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">вбудований LED</text>
+<polyline points="500,495 512,495" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="516" y="500" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f6fd1">← тумблер ARM</text>
 <rect x="700" y="60" width="480" height="330" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">ІЧ-канал ×4 (показано канал 1)</text>
+<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">ІЧ-канал ×4 (показано канал 1) — роз'єми B і E</text>
 <line x1="730" y1="110" x2="750" y2="110" stroke="#f08c00" stroke-width="2.6" stroke-linecap="round"/>
 <line x1="740" y1="110" x2="740" y2="120" stroke="#f08c00" stroke-width="2.4" stroke-linecap="round"/>
 <text x="740" y="104" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f08c00">+5V</text>
@@ -185,7 +199,7 @@
 <text x="1164" y="330" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="end" font-weight="normal" fill="#5b6470">Промінь цілий → LOW,</text>
 <text x="1164" y="345" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="end" font-weight="normal" fill="#5b6470">перекритий → HIGH</text>
 <rect x="700" y="405" width="480" height="215" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="429" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Соленоїд-засувка</text>
+<text x="714" y="429" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Соленоїд — роз'єм P1</text>
 <text x="716" y="535" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">D9</text>
 <polyline points="740,530 752,530" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="752" y1="530" x2="764.0" y2="530" stroke="#1f6fd1" stroke-width="2.2" stroke-linecap="round"/>
@@ -251,7 +265,7 @@
 <line x1="1122" y1="576" x2="1138" y2="576" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="1126" y1="580" x2="1134" y2="580" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <rect x="700" y="635" width="480" height="250" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="659" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серво, кінцевик, бузер, ARM</text>
+<text x="714" y="659" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серво (3-pin), кінцевик (S1), бузер і ARM (на основі)</text>
 <rect x="870" y="670" width="110" height="56" rx="6" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
 <circle cx="954" cy="698" r="12" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
 <text x="878" y="692" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#ffffff">MG996R</text>
@@ -299,7 +313,7 @@
 <line x1="842" y1="860" x2="858" y2="860" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <line x1="846" y1="864" x2="854" y2="864" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <text x="880" y="851" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">тумблер ARM (LOW = озброєно)</text>
-<rect x="24" y="560" width="660" height="240" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
+<rect x="24" y="560" width="660" height="260" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
 <text x="38" y="584" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Позначення</text>
 <line x1="42" y1="606" x2="82" y2="606" stroke="#d62828" stroke-width="4" stroke-linecap="round"/>
 <text x="94" y="610" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1b1b1b">+12 В (БЖ): соленоїд, VIN Nano, вхід DC-DC</text>
@@ -315,4 +329,5 @@
 <text x="42" y="750" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">LM339: пін 3 → +5V, пін 12 → ⏚, 100 нФ між ними.</text>
 <text x="42" y="770" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Канали (IN+, IN−, OUT): 1 — 5, 4, 2 · 2 — 7, 6, 1 · 3 — 9, 8, 14 · 4 — 11, 10, 13.</text>
 <text x="42" y="790" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Трубки з термоусадки на фототранзистори — від стороннього світла.</text>
+<text x="42" y="810" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Зелені мітки — роз'єм основи JST-XH і контакт (B·3 = роз'єм B, контакт 3): modules-connectors.svg.</text>
 </svg>

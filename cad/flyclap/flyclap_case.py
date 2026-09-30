@@ -23,6 +23,8 @@ import sys
 import cadquery as cq
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(HERE))
+import cadlib  # noqa: E402  (спільна коробка основи з вікнами під роз'єми JST-XH)
 
 # ============================ ПАРАМЕТРИ ============================
 # Корпус
@@ -73,6 +75,16 @@ SEAM_W = 9.0                     # ширина рамки шва (пласти�
 SEAM_GAP = (12.0, 58.0)          # проріз у рамці для шестерень / хвостовиків
 
 CLR = 0.3                        # типовий зазор FDM
+
+# Роз'єми основи FlyClap (docs/modules.md): вікна в зовнішній стінці блока електроніки,
+# від переду корпусу до заду — так само, як розташовані модулі.
+BASE_PORTS = [
+    ("E: випромінювачі завіси (XH-3)", "XH3"),
+    ("servo: взведення (3-pin)", "servo"),
+    ("P1: соленоїд (XH-2)", "XH2"),
+    ("S1: кінцевик (XH-4)", "XH4"),
+    ("B: приймачі завіси (XH-6)", "XH6"),
+]
 
 
 # ============================ ПРИМІТИВИ ============================
@@ -296,31 +308,14 @@ def latch_bolt(extended=True):
 
 # ============================ ЕЛЕКТРОНІКА, ПРИМАНКА ============================
 def elec_box():
-    """Коробка під плату 5×7 см (Nano, MOSFET, компаратор). Вухо з двома отворами
-    кріпиться до правої стінки корпусу. Локальні координати: x — від стінки назовні."""
-    L, Wd, Hh, t = 100.0, 70.0, 40.0, 2.4
-    box = B(0, Wd, 0, L, 0, Hh).cut(B(t, Wd - t, t, L - t, t, Hh + 1))
-    ear = B(0, t, 0, L, Hh, Hh + 22)
-    box = box.union(ear)
-    for y in (25, 75):
-        box = box.cut(cylX(y, Hh + 12, 1.7, -1, t + 1))
-    for (x, y) in ((t + 4, t + 4), (Wd - t - 4, t + 4), (t + 4, L - t - 4), (Wd - t - 4, L - t - 4)):
-        box = box.union(cylZ(x, y, 3.5, t, Hh)).cut(cylZ(x, y, 1.3, Hh - 12, Hh + 1))
-    for (x, y) in ((Wd / 2 - 22.5, L / 2 - 32.5), (Wd / 2 + 22.5, L / 2 - 32.5),
-                   (Wd / 2 - 22.5, L / 2 + 32.5), (Wd / 2 + 22.5, L / 2 + 32.5)):
-        box = box.union(cylZ(x, y, 2.8, t, t + 5)).cut(cylZ(x, y, 0.9, t, t + 6))
-    for y, d in ((20, 8.0), (50, 6.3), (80, 5.2)):                          # DC-гніздо, тумблер ARM, LED
-        box = box.cut(cylX(y, 20, d / 2, Wd - t - 1, Wd + 1))
-    box = box.cut(cylY(Wd / 2, 20, 5, -1, t + 1)).cut(cylY(Wd / 2, 20, 5, L - t - 1, L + 1))  # кабелі
-    return box
+    """Коробка основи під плату 5×7 см (Nano, MOSFET, компаратор) з вікнами під
+    роз'єми модулів. Вухо з двома отворами кріпиться до правої стінки корпусу.
+    Локальні координати: x — від стінки назовні."""
+    return cadlib.base_box(BASE_PORTS, ear=True)
 
 
 def elec_lid():
-    L, Wd, t = 100.0, 70.0, 2.4
-    lidp = B(0, Wd, 0, L, 0, t)
-    for (x, y) in ((t + 4, t + 4), (Wd - t - 4, t + 4), (t + 4, L - t - 4), (Wd - t - 4, L - t - 4)):
-        lidp = lidp.cut(cylZ(x, y, 1.7, -1, t + 1))
-    return lidp.cut(cylZ(Wd / 2, L / 2, 6, -1, t + 1))                     # бузер Ø12
+    return cadlib.base_lid()
 
 
 def bait_cup():
@@ -376,6 +371,8 @@ def assembly_parts(parts, opened=True, deg=None):
         ("latch_bolt", latch_bolt(extended=True), (0.85, 0.2, 0.2)),
         ("electronics_box", ebox_place(parts["electronics_box"]), (0.25, 0.28, 0.33)),
         ("electronics_lid", ebox_place(parts["electronics_lid"].translate((0, 0, 40))), (0.25, 0.28, 0.33)),
+        ("base_pcb", ebox_place(cadlib.pcb_dummy()), (0.1, 0.45, 0.25)),
+        ("base_plugs", ebox_place(cadlib.plug_dummies(BASE_PORTS)), (0.92, 0.9, 0.82)),
         ("bait_cup", parts["bait_cup"].translate((0, 85, TF)), (0.95, 0.75, 0.35)),
         ("servo_MG996R", servo_dummy(), (0.18, 0.2, 0.25)),
         ("solenoid_JF0530B", solenoid_dummy(), (0.45, 0.45, 0.45)),
@@ -416,6 +413,7 @@ def checks(parts):
              ("servo_MG996R", "shell_right"), ("servo_MG996R", "hinge_right"),
              ("lid_mesh", "shell_right"), ("lid_mesh", "shell_left"),
              ("electronics_box", "shell_right"), ("latch_mount", "shell_left"),
+             ("base_pcb", "electronics_box"), ("base_plugs", "electronics_box"), ("base_pcb", "electronics_lid"),
              ("rod_right", "hinge_right"), ("rod_left", "hinge_left")]
     for opened in (True, False):
         items = {n: w for n, w, _ in assembly_parts(parts, opened)}
@@ -494,7 +492,7 @@ def previews(parts):
     # 3. розріз спереду по Y = 6 мм: шестерні, петлі, хвостовик серви, засувка
     keep = B(-500, 500, 6, 500, -500, 500)
     items = [(w.intersect(keep), c) for n, w, c in assembly_parts(parts, opened=True)
-             if n not in ("lid_mesh", "electronics_lid")]
+             if n not in ("lid_mesh", "electronics_lid", "base_pcb", "base_plugs")]
     pth = os.path.join(out, "3_section_front.png")
     pj = render.render_png(items, pth, yaw=0, pitch=-90, size=size, margin=(70, 250, 60, 250))
     lab = []
@@ -533,6 +531,24 @@ def previews(parts):
     render.render_png(items, pth, yaw=-25, pitch=-58, size=size, margin=(70, 40, 60, 40))
     render.add_text(pth, size, "Деталі для друку (10 шт., кожна влазить на стіл 220 × 220 мм)",
                     notes=("Половини корпусу й коробку друкувати стоячи на дні; петлі — лежачи на вусі; кришку — плиском.",))
+    # 5. блок електроніки: вікна під роз'єми модулів (стінка з вікнами — до глядача)
+    turn = lambda w: w.rotate((0, 0, 0), (0, 0, 1), -90)
+    items = [(turn(parts["electronics_box"]), (0.25, 0.28, 0.33)),
+             (turn(cadlib.pcb_dummy()), (0.1, 0.45, 0.25)),
+             (turn(cadlib.plug_dummies(BASE_PORTS)), (0.92, 0.9, 0.82))]
+    pth = os.path.join(out, "5_connectors.png")
+    pj = render.render_png(items, pth, yaw=-18, pitch=-72, size=size, margin=(190, 120, 170, 120))
+    z0, z1 = cadlib.port_z()
+    lab = []
+    n = len(BASE_PORTS)
+    for i, (name, kind, y0, y1) in enumerate(cadlib.port_layout(BASE_PORTS)):
+        px, py = pj((y0 + y1) / 2, -cadlib.BOX_W - 6, (z0 + z1) / 2)
+        lab.append((px, py, 260 + i * (size[0] - 520) // (n - 1), size[1] - 110 + (i % 2) * 28, name))
+    for (y, t) in ((20, "гніздо живлення 12 В"), (50, "тумблер ARM"), (80, "статус-LED")):
+        px, py = pj(y, -cadlib.BOX_W, cadlib.PANEL_Z)
+        lab.append((px, py, px - 40 + (y - 50) * 3, 120, t))
+    render.add_text(pth, size, "Блок електроніки (основа): вікна під роз'єми модулів", labels=lab,
+                    notes=("Кутові вилки JST-XH стоять на краю плати 5 × 7 см; штекери вставляються ззовні. Контакт 1 — GND.",))
     print("Прев'ю: cad/flyclap/preview/")
 
 

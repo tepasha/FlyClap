@@ -6,6 +6,8 @@ FlySonar — турель pan-tilt для 3D-друку (параметричн�
   * Arduino-версія: головка з HC-SR04 і соплом під ним (head_sonar);
   * ESP32-версія:   головка лише з соплом на осі нахилу (head_nozzle)
                     + кріплення ESP32-CAM на стійці (camera_post, camera_cradle).
+Для обох — коробка основи (electronics_box, electronics_lid) з вікнами під роз'єми
+JST-XH, до яких підключаються модулі (docs/modules.md).
 
 Запуск з кореня репозиторію:
     pip install cadquery
@@ -22,6 +24,7 @@ import cadquery as cq
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
+import cadlib  # noqa: E402
 from cadlib import B, cylX, cylY, cylZ, overlap, fits_bed, single_solid  # noqa: E402
 
 BED = (220.0, 220.0, 250.0)
@@ -62,6 +65,18 @@ NOZ_Z_SONAR = -17.0              # сопло під сонаром (відно�
 # ESP32-CAM (плата 27 × 40,5; висота з деталями ~5 мм)
 CAM_W, CAM_L, CAM_T = 27.0, 40.5, 5.0
 CAM_POST_H = 90.0                # висота осі нахилу камери над столом
+
+# Роз'єми основи турелі (docs/modules.md): вікна в стінці коробки електроніки.
+# Arduino-версія використовує всі; ESP32-версія — серви й P1 (камера на своїй стійці).
+BASE_PORTS = [
+    ("L: зв'язок з \"очима\" (XH-3)", "XH3"),
+    ("S2: кнопка RECAL (XH-4)", "XH4"),
+    ("S1: сонар HC-SR04 (XH-4)", "XH4"),
+    ("servo: TILT", "servo"),
+    ("servo: PAN", "servo"),
+    ("P1: помпа / клапан (XH-2)", "XH2"),
+]
+BOX_AT = (-150.0, -50.0, 0.0)    # місце коробки на дошці відносно турелі
 
 TILT_RANGE = (-35, 45)           # діапазон нахилу, що перевіряється (град)
 PAN_RANGE = (-90, 90)
@@ -194,6 +209,15 @@ def camera_cradle():
     return c.cut(cylY(1, CAM_POST_H, 1.7, -5, 5))
 
 
+def electronics_box():
+    """Коробка основи: плата 5×7 см, вікна під роз'єми модулів, лапки під шурупи."""
+    return cadlib.base_box(BASE_PORTS, feet=True)
+
+
+def electronics_lid():
+    return cadlib.base_lid()
+
+
 # ============================ МУЛЯЖІ ============================
 def servo_dummy():
     """Мікросерво: вал на початку координат, угору (+Z); низ корпусу z = −SV_SHAFT_H."""
@@ -255,6 +279,8 @@ PRINTED = {
     "head_nozzle": head_nozzle,
     "camera_post": camera_post,
     "camera_cradle": camera_cradle,
+    "electronics_box": electronics_box,
+    "electronics_lid": electronics_lid,
 }
 
 
@@ -274,6 +300,11 @@ def assembly(parts, version="sonar", pan_deg=0.0, tilt_deg=0.0):
              ("servo_pan", at_pan_servo(servo_dummy()), (0.18, 0.2, 0.25)),
              ("horn_pan", at_pan_servo(horn_dummy()), (0.95, 0.95, 0.95))]
     items += [(n, pan(w, pan_deg), c) for n, w, c in moving]
+    at_box = lambda w: w.translate(BOX_AT)
+    items += [("electronics_box", at_box(parts["electronics_box"]), (0.25, 0.28, 0.33)),
+              ("electronics_lid", at_box(parts["electronics_lid"].translate((0, 0, cadlib.BOX_H))), (0.25, 0.28, 0.33)),
+              ("base_pcb", at_box(cadlib.pcb_dummy()), (0.1, 0.45, 0.25)),
+              ("base_plugs", at_box(cadlib.plug_dummies(BASE_PORTS)), (0.92, 0.9, 0.82))]
     if version == "nozzle":
         cam = lambda w: w.translate((-40, -90, 0))
         items += [("camera_post", cam(parts["camera_post"]), (0.3, 0.33, 0.38)),
@@ -320,6 +351,16 @@ def checks(parts):
                 if v >= 0.5:
                     ok = False
                     print(f"  {a} ∩ {b} = {v:.2f} мм³  ПЕРЕТИН!")
+    # коробка основи: плата і штекери у вікнах, сама коробка не заважає турелі й стійці камери
+    it = {n: w for n, w, _ in assembly(parts, "nozzle")}
+    wbox = 0.0
+    for a, b in (("base_pcb", "electronics_box"), ("base_plugs", "electronics_box"), ("base_pcb", "electronics_lid"),
+                 ("electronics_box", "base"), ("electronics_box", "yoke"), ("electronics_box", "camera_post"),
+                 ("base_plugs", "base"), ("base_plugs", "yoke")):
+        wbox = max(wbox, overlap(it[a], it[b]))
+    print(f"\n== Коробка основи: плата, штекери у вікнах, сусідні деталі: найбільший перетин {wbox:.2f} мм³  "
+          f"{'OK' if wbox < 0.5 else 'ПЕРЕТИН!'}")
+    ok &= wbox < 0.5
     # складання HC-SR04: плата опускається згори в паз — на всьому шляху не чіпляє головку
     head = parts["head_sonar"]
     wmax = 0.0
@@ -360,7 +401,8 @@ def previews(parts):
     os.makedirs(out, exist_ok=True)
     size = (1200, 900)
 
-    items = [(w, c) for n, w, c in assembly(parts, "sonar", 20, 15)]
+    box_parts = ("electronics_box", "electronics_lid", "base_pcb", "base_plugs")
+    items = [(w, c) for n, w, c in assembly(parts, "sonar", 20, 15) if n not in box_parts]
     pth = os.path.join(out, "1_arduino.png")
     pj = render.render_png(items, pth, yaw=-120, pitch=-65, size=size, margin=(70, 250, 60, 250))
     lab = []
@@ -378,7 +420,7 @@ def previews(parts):
     render.add_text(pth, size, "FlySonar, Arduino-версія: турель pan-tilt з HC-SR04", labels=lab,
                     notes=("Осі PAN і TILT перетинаються — приціл не зсувається при повороті.",))
 
-    items = [(w, c) for n, w, c in assembly(parts, "nozzle", -25, 10)]
+    items = [(w, c) for n, w, c in assembly(parts, "nozzle", -25, 10) if n not in box_parts]
     pth = os.path.join(out, "2_esp32.png")
     render.render_png(items, pth, yaw=-30, pitch=-65, size=size, margin=(70, 60, 60, 60))
     render.add_text(pth, size, "FlySonar, ESP32-версія: турель із соплом + кріплення ESP32-CAM",
@@ -401,9 +443,11 @@ def previews(parts):
                     notes=("Сопло — на 17 мм нижче осі нахилу (у ESP32-версії — точно на осі).",))
 
     layout = [("base", (0, 0, 0)), ("yoke", (95, 0, 0)), ("head_sonar", (190, -10, 0)),
-              ("head_nozzle", (255, -10, 0)), ("camera_post", (330, 0, 0)), ("camera_cradle", (400, 0, 0))]
+              ("head_nozzle", (255, -10, 0)), ("camera_post", (330, 0, 0)), ("camera_cradle", (400, 0, 0)),
+              ("electronics_box", (60, -150, 0)), ("electronics_lid", (170, -150, 0))]
     colors = {"base": (0.3, 0.33, 0.38), "yoke": (0.93, 0.93, 0.95), "head_sonar": (0.95, 0.55, 0.15),
-              "head_nozzle": (0.95, 0.55, 0.15), "camera_post": (0.3, 0.33, 0.38), "camera_cradle": (0.95, 0.55, 0.15)}
+              "head_nozzle": (0.95, 0.55, 0.15), "camera_post": (0.3, 0.33, 0.38), "camera_cradle": (0.95, 0.55, 0.15),
+              "electronics_box": (0.25, 0.28, 0.33), "electronics_lid": (0.25, 0.28, 0.33)}
     items = []
     for n, off in layout:
         w = parts[n]
@@ -413,6 +457,24 @@ def previews(parts):
     render.render_png(items, pth, yaw=-25, pitch=-60, size=size, margin=(70, 40, 60, 40))
     render.add_text(pth, size, "Деталі для друку",
                     notes=("Головку друкувати передньою пластиною донизу, основу й вилку — плиском на дні.",))
+    # коробка основи: вікна під роз'єми модулів (стінка з вікнами — до глядача)
+    turn = lambda w: w.rotate((0, 0, 0), (0, 0, 1), -90)
+    items = [(turn(parts["electronics_box"]), (0.25, 0.28, 0.33)),
+             (turn(cadlib.pcb_dummy()), (0.1, 0.45, 0.25)),
+             (turn(cadlib.plug_dummies(BASE_PORTS)), (0.92, 0.9, 0.82))]
+    pth = os.path.join(out, "5_base_box.png")
+    pj = render.render_png(items, pth, yaw=-18, pitch=-72, size=size, margin=(190, 120, 170, 120))
+    z0, z1 = cadlib.port_z()
+    lab = []
+    k = len(BASE_PORTS)
+    for i, (name, kind, y0, y1) in enumerate(cadlib.port_layout(BASE_PORTS)):
+        px, py = pj((y0 + y1) / 2, -cadlib.BOX_W - 6, (z0 + z1) / 2)
+        lab.append((px, py, 260 + i * (size[0] - 520) // (k - 1), size[1] - 110 + (i % 2) * 28, name))
+    for (y, t) in ((20, "гніздо живлення 12 В"), (50, "тумблер ARM"), (80, "статус-LED")):
+        px, py = pj(y, -cadlib.BOX_W, cadlib.PANEL_Z)
+        lab.append((px, py, px - 40 + (y - 50) * 3, 120, t))
+    render.add_text(pth, size, "Коробка основи турелі: вікна під роз'єми модулів", labels=lab,
+                    notes=("Кутові вилки JST-XH стоять на краю плати 5 × 7 см; штекери вставляються ззовні. Контакт 1 — GND.",))
     print("Прев'ю: cad/flysonar/preview/")
 
 

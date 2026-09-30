@@ -97,7 +97,7 @@
 <text x="580" y="229" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6470">PSRAM — не чіпати</text>
 <text x="580" y="193" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6470">не підключати</text>
 <rect x="700" y="60" width="480" height="250" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Клапан 12 В (нормально закритий, прямої дії)</text>
+<text x="714" y="84" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Клапан 12 В (NC, прямої дії) — роз'єм P1 (XH-2)</text>
 <text x="716" y="230" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f6fd1">IO13</text>
 <polyline points="756,225 762,225" fill="none" stroke="#1f6fd1" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="762" y1="225" x2="774.0" y2="225" stroke="#1f6fd1" stroke-width="2.2" stroke-linecap="round"/>
@@ -151,7 +151,7 @@
 <text x="1086" y="163.0" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">1N5819</text>
 <polyline points="1070,182 1010,182" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <rect x="700" y="325" width="480" height="220" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
-<text x="714" y="349" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серви (живлення — від DC-DC 5 В)</text>
+<text x="714" y="349" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Серви (живлення від DC-DC 5 В) — servo 3-pin</text>
 <rect x="930" y="365" width="110" height="56" rx="6" fill="#2f3b4a" stroke="#1d2530" stroke-width="1.6"/>
 <circle cx="1014" cy="393" r="12" fill="#dfe6ee" stroke="#1d2530" stroke-width="1.8"/>
 <text x="938" y="387" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#ffffff">PAN</text>
@@ -193,7 +193,7 @@
 <line x1="846" y1="624" x2="854" y2="624" stroke="#222222" stroke-width="2.2" stroke-linecap="round"/>
 <text x="880" y="604" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">лише на GND, БЕЗ зовнішньої</text>
 <text x="880" y="622" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1b1b1b">підтяжки (strapping-пін)</text>
-<text x="716" y="660" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Статус-LED — вбудований GPIO33: блимає = ARM, горить = SAFE.</text>
+<text x="716" y="660" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6470">Статус-LED (GPIO33): горить = ARM, коротко мигає = SAFE.</text>
 <rect x="700" y="695" width="480" height="225" rx="10" fill="#f7f9fc" stroke="#b8c2cf" stroke-width="1.4"/>
 <text x="714" y="719" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="15" text-anchor="start" font-weight="bold" fill="#1b1b1b">Інше</text>
 <rect x="716" y="735" width="90" height="60" rx="4" fill="#fffbe6" stroke="#c9b458" stroke-width="1.6"/>
