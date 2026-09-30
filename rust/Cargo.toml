@@ -1,7 +1,0 @@
-# Хост-воркспейс: спільне ядро прошивок і його тести (`cargo test` з цієї теки).
-# Прошивки (flyclap, flysonar, flysonar-esp32) — окремі крейти зі своїм
-# тулчейном і таргетом, збираються з власних тек (див. README.md).
-[workspace]
-resolver = "2"
-members = ["flycore"]
-exclude = ["flyclap", "flysonar", "flysonar-esp32"]

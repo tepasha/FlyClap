@@ -1,3 +1,0 @@
-# Xtensa (ESP32 / ESP32-S3) — тулчейн від espup: https://github.com/esp-rs/espup
-[toolchain]
-channel = "esp"
